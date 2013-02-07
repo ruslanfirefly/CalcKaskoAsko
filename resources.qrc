@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/">
+        <file>Osago.db.json</file>
+    </qresource>
+</RCC>
