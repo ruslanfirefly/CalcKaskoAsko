@@ -9,7 +9,7 @@
 const QList<QString> dataBase::tablesDescriptions =
 {
     "PRAGMA foreign_keys=ON",
-  "CREATE TABLE agents("
+  " CREATE TABLE IF NOT EXISTS agents("
   "first_name TEXT,"
   "second_name TEXT,"
   "third_name TEXT,"
@@ -17,47 +17,49 @@ const QList<QString> dataBase::tablesDescriptions =
   "date INTEGER,"
   "PRIMARY KEY(number, date)"
   ")",
-    "CREATE TABLE auto_types("
+    " CREATE TABLE IF NOT EXISTS auto_types("
     "hrn TEXT,"
-    "cost INTEGER"
+    "coeff INTEGER,"
+     "id INTEGER PRIMARY KEY AUTOINCREMENT DEFAULT NULL,"
+    "coeff_ur INTEGER DEFAULT 0"
     ")",
-    "CREATE TABLE client_type("
+    " CREATE TABLE IF NOT EXISTS client_type("
     "coeff INTEGER,"
     "hrn TEXT"
     ")",
-    "CREATE TABLE reg_type("
-    "id INTEGER PRIMARY KEY AUTOINCREMENT,"
+    " CREATE TABLE IF NOT EXISTS reg_type("
+    "coeff INTEGER PRIMARY KEY AUTOINCREMENT,"
     "hrn TEXT"
     ")",
-    "CREATE TABLE regions("
-    "id INTEGER PRIMARY KEY AUTOINCREMENT,"
+    " CREATE TABLE IF NOT EXISTS regions("
+    "coeff INTEGER PRIMARY KEY AUTOINCREMENT,"
     "hrn TEXT"
     ")",
-    "CREATE TABLE towns("
+    " CREATE TABLE IF NOT EXISTS towns("
     "id INTEGER,"
     "hrn TEXT,"
     "coeff INTEGER,"
     "trailer_coeff INTEGER,"
     "region_id INTEGER,"
-    "FOREIGN KEY (region_id) REFERENCES regions (id)"
+    "FOREIGN KEY (region_id) REFERENCES regions (coeff)"
     ")",
-    "CREATE TABLE classes("
+    " CREATE TABLE IF NOT EXISTS classes("
     "coeff INTEGER,"
     "hrn TEXT"
     ")",
-    "CREATE TABLE ages("
+    " CREATE TABLE IF NOT EXISTS ages("
      "coeff INTEGER,"
     "hrn TEXT"
     ")",
-    "CREATE TABLE power("
+    " CREATE TABLE IF NOT EXISTS power("
     "coeff INTEGER,"
     "hrn TEXT"
     ")",
-    "CREATE TABLE internal_period("
+    " CREATE TABLE IF NOT EXISTS internal_period("
     "coeff INTEGER,"
     "hrn TEXT"
     ")",
-    "CREATE TABLE foreign_period("
+    " CREATE TABLE IF NOT EXISTS foreign_period("
      "coeff INTEGER,"
     "hrn TEXT"
     ")"
@@ -86,7 +88,7 @@ void dataBase::fillFromJson(const QString &path)
             bar.setValue(bar.value() >= bar.maximum() ? 0 : bar.value()+1);
             qApp->processEvents();
             QList<QVariant> values = list_it->toList();
-            QString q_text = QString("INSERT INTO %1 VALUES ( '%2', '%3' )")
+            QString q_text = QString("INSERT INTO %1 ( coeff, hrn  ) VALUES ( '%2', '%3' )")
                     .arg(it.key())
                     .arg(values.at(0).toString())
                     .arg(values.at(1).toString());
@@ -100,6 +102,8 @@ void dataBase::fillFromJson(const QString &path)
         QList<QVariant> towns = it->toList().at(2).toList();
         for(QList<QVariant>::const_iterator town_it = towns.begin(); town_it != towns.end(); ++town_it )
         {
+            bar.setValue(bar.value() >= bar.maximum() ? 0 : bar.value()+1);
+            qApp->processEvents();
             QList<QVariant> town_desc = town_it->toList();
             QString q_text = QString("INSERT INTO towns VALUES ( %1, '%2', %3, %4, %5)")
                     .arg(town_desc.at(0).toInt())
@@ -110,6 +114,7 @@ void dataBase::fillFromJson(const QString &path)
             query(q_text);
         }
     }
+    bar.close();
 }
 
 void dataBase::initDb()

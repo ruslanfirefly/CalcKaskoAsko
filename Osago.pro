@@ -13,6 +13,7 @@ QMAKE_CXXFLAGS_DEBUG += -g
 CONFIG += debug
 QT       += core gui
 QT += sql
+QT += webkit
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -27,7 +28,10 @@ SOURCES += main.cpp\
     database.cpp \
     dateDelegate.cpp \
     databaseeditor.cpp \
-    json.cpp
+    json.cpp \
+    osagocalcform.cpp \
+    calculatorosago.cpp \
+    printer.cpp
 
 HEADERS  += mainwindow.h \
     agentsdialog.h \
@@ -35,11 +39,15 @@ HEADERS  += mainwindow.h \
     custom_exceptions.h \
     dateDelegate.h \
     databaseeditor.h \
-    json.h
+    json.h \
+    osagocalcform.h \
+    calculatorosago.h \
+    printer.h
 
 FORMS    += mainwindow.ui \
     agentsdialog.ui \
-    databaseeditor.ui
+    databaseeditor.ui \
+    osagocalcform.ui
 
 RESOURCES += \
     resources.qrc

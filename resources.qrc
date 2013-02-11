@@ -1,5 +1,7 @@
 <RCC>
     <qresource prefix="/">
         <file>Osago.db.json</file>
+        <file>templates/osago_zayavlenie.html</file>
+        <file>templates/logo.jpg</file>
     </qresource>
 </RCC>

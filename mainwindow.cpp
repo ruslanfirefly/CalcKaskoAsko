@@ -4,6 +4,7 @@
 #include "agentsdialog.h"
 #include "databaseeditor.h"
 #include <QAction>
+#include "osagocalcform.h"
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -37,6 +38,13 @@ MainWindow::~MainWindow()
 void MainWindow::on_action_triggered()
 {
     QDialog* ad = new agentsDialog(db);
+    ad->setModal(true);
+    ad->show();
+}
+
+void MainWindow::on_pushButton_clicked()
+{
+    QDialog* ad = new osagoCalcForm(db, this);
     ad->setModal(true);
     ad->show();
 }
