@@ -31,7 +31,11 @@ SOURCES += main.cpp\
     json.cpp \
     osagocalcform.cpp \
     calculatorosago.cpp \
-    printer.cpp
+    printer.cpp \
+    osagoblankdataform.cpp \
+    osagomaster.cpp \
+    osagotsblank.cpp \
+    osagousinginfoform.cpp
 
 HEADERS  += mainwindow.h \
     agentsdialog.h \
@@ -42,12 +46,20 @@ HEADERS  += mainwindow.h \
     json.h \
     osagocalcform.h \
     calculatorosago.h \
-    printer.h
+    printer.h \
+    osagoblankdataform.h \
+    osagomaster.h \
+    osagotsblank.h \
+    osagousinginfoform.h \
+    dataObjects.h
 
 FORMS    += mainwindow.ui \
     agentsdialog.ui \
     databaseeditor.ui \
-    osagocalcform.ui
+    osagocalcform.ui \
+    osagoblankdataform.ui \
+    osagotsblank.ui \
+    osagousinginfoform.ui
 
 RESOURCES += \
     resources.qrc

@@ -15,10 +15,10 @@ int main(int argc, char *argv[])
         QResource::registerResource("resources.qrc");
         qDebug()<<qApp->applicationDirPath();
         MainWindow w;
-        QWebView* tmpView = new QWebView();
+        /*QWebView* tmpView = new QWebView();
         tmpView->settings()->setAttribute(QWebSettings::DeveloperExtrasEnabled, true);
         tmpView->load(QUrl("file://"+qApp->applicationDirPath()+"/templates/osago_zayavlenie.html"));
-        tmpView->show();
+        tmpView->show();*/
         w.show();
         return a.exec();
 }

@@ -5,6 +5,7 @@
 #include "databaseeditor.h"
 #include <QAction>
 #include "osagocalcform.h"
+#include "osagomaster.h"
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -44,7 +45,8 @@ void MainWindow::on_action_triggered()
 
 void MainWindow::on_pushButton_clicked()
 {
-    QDialog* ad = new osagoCalcForm(db, this);
-    ad->setModal(true);
-    ad->show();
+    //QDialog* ad = new osagoCalcForm(db, this);
+    //ad->setModal(true);
+    //ad->show();
+    OsagoMaster* m = new OsagoMaster(this);
 }

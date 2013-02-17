@@ -8,17 +8,19 @@
 #include <calculatorosago.h>
 #include "printer.h"
 #include <QFile>
+#include "osagoblankdataform.h"
 osagoCalcForm::osagoCalcForm(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::osagoCalcForm)
 {
     ui->setupUi(this);
+    activateComboBoxes();
+    createCompleter();
+    connect(this->ui->nextButton, SIGNAL(clicked()), this, SIGNAL(next()));
 }
 osagoCalcForm::osagoCalcForm(dataBase *base, QWidget *parent) : osagoCalcForm(parent)
 {
     db = base;
-    activateComboBoxes();
-    createCompleter();
 }
 osagoCalcForm::~osagoCalcForm()
 {
@@ -81,7 +83,5 @@ void osagoCalcForm::calculate()
 
 void osagoCalcForm::on_pushButton_clicked()
 {
-    QFile f(":/templates/osago_zayavlenie.html");
-    f.open(QIODevice::ReadOnly);
-    Printer::getInstance().printPreview(QString::fromUtf8(f.readAll()));
+
 }

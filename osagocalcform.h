@@ -17,9 +17,9 @@ public:
     explicit osagoCalcForm(QWidget *parent = 0);
     osagoCalcForm(dataBase * base, QWidget *parent);
     ~osagoCalcForm();
-    
+
 private:
-    Ui::osagoCalcForm *ui;
+Ui::osagoCalcForm *ui;
     dataBase * db;
     QStringListModel* getHrn(const QString& name);
     void setComboBoxModel(const QString& tableName, QComboBox* cb, int column = 0);
@@ -28,6 +28,8 @@ private:
 private slots:
     void calculate();
     void on_pushButton_clicked();
+signals:
+    void next();
 };
 
 #endif // OSAGOCALCFORM_H
