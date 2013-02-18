@@ -1,5 +1,6 @@
 #include "osagousinginfoform.h"
 #include "ui_osagousinginfoform.h"
+#include "printer.h"
 OsagoUsingInfoForm::OsagoUsingInfoForm(QWidget *parent) :
     QDialog(parent),
      ui(new Ui::OsagoUsingInfoForm)
@@ -12,6 +13,9 @@ OsagoUsingInfoForm::OsagoUsingInfoForm(QWidget *parent) :
     connect(ui->showDriverButton, SIGNAL(clicked()), this, SLOT(showDriver()));
     connect(ui->constDriversButton, SIGNAL(toggled(bool)), this, SLOT(setUnlimDriversEnabled(bool)));
     connect(ui->lastOsagoContractCheckBox, SIGNAL(toggled(bool)), this, SLOT(lastOsagoContractEnable(bool)));
+    connect(ui->prevButton, SIGNAL(clicked()), this, SIGNAL(prev()));
+    connect(ui->printBlank, SIGNAL(clicked()), this, SIGNAL(printBlank()));
+    connect(ui->printRequest, SIGNAL(clicked()), this, SIGNAL(printRequest()));
     ui->constDriversButton->setChecked(true);
     lastOsagoContractEnable(false);
     this->resize(minimumSize());
@@ -89,3 +93,10 @@ void OsagoUsingInfoForm::lastOsagoContractEnable(bool enable)
     }
 }
 
+
+
+
+void OsagoUsingInfoForm::on_printRequest_clicked()
+{
+
+}

@@ -14,6 +14,7 @@ class Printer
     QPrintPreviewDialog *prevDlg;
 public:
     void printPreview(const QString& s);
+    void printPreview(QWebView* view);
     static Printer& getInstance();
     ~Printer();
 };

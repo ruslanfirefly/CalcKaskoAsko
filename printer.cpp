@@ -16,12 +16,17 @@ Printer::Printer()
 void Printer::printPreview(const QString &s)
 {
 
-    QPrintPreviewDialog* tmp= new QPrintPreviewDialog;
     textEdit->setHtml(s, QUrl("file://"+qApp->applicationDirPath()+"/templates/"));
     QObject::connect(prevDlg, SIGNAL(paintRequested(QPrinter*)), textEdit, SLOT(print(QPrinter*)));
     //textEdit->show();
     prevDlg->exec();
 }
+void Printer::printPreview(QWebView* view)
+{
+    QObject::connect(prevDlg, SIGNAL(paintRequested(QPrinter*)), view, SLOT(print(QPrinter*)));
+    prevDlg->exec();
+}
+
 Printer& Printer::getInstance()
 {
     static Printer printer;

@@ -23,6 +23,9 @@ public slots:
     void prev();
     void prev(int);
     void step(int);
+    void printRequest();
+    void printRequestPreview();
+    void printBlank();
     
 };
 

@@ -171,9 +171,16 @@
           </spacer>
          </item>
          <item>
-          <widget class="QPushButton" name="next_button">
+          <widget class="QPushButton" name="printRequest">
            <property name="text">
-            <string>Далее</string>
+            <string>Печать заявления</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="printBlank">
+           <property name="text">
+            <string>Печать бланка</string>
            </property>
           </widget>
          </item>

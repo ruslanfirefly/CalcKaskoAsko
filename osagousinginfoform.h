@@ -25,6 +25,13 @@ private slots:
     void on_delTimeButton_clicked();
     void setUnlimDriversEnabled(bool);
     void lastOsagoContractEnable(bool);
+    void on_printRequest_clicked();
+
+signals:
+    void prev();
+    void printRequest();
+
+    void printBlank();
 private:
     Ui::OsagoUsingInfoForm *ui;
 };
