@@ -34,7 +34,7 @@
                 </widget>
                </item>
                <item row="0" column="1" colspan="2">
-                <widget class="QLineEdit" name="lineEdit">
+                <widget class="QLineEdit" name="modelLineEdit">
                  <property name="minimumSize">
                   <size>
                    <width>191</width>
@@ -51,7 +51,7 @@
                 </widget>
                </item>
                <item row="1" column="1" colspan="2">
-                <widget class="QLineEdit" name="lineEdit_2"/>
+                <widget class="QLineEdit" name="vinLineEdit"/>
                </item>
                <item row="2" column="0">
                 <widget class="QLabel" name="label_5">
@@ -61,7 +61,7 @@
                 </widget>
                </item>
                <item row="2" column="1">
-                <widget class="QSpinBox" name="spinBox_2">
+                <widget class="QSpinBox" name="powerSpinBox">
                  <property name="maximum">
                   <number>2000</number>
                  </property>
@@ -70,14 +70,14 @@
                <item row="2" column="2">
                 <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0">
                  <item>
-                  <widget class="QRadioButton" name="radioButton">
+                  <widget class="QRadioButton" name="kWtRadioButton">
                    <property name="text">
                     <string>КВт</string>
                    </property>
                   </widget>
                  </item>
                  <item>
-                  <widget class="QRadioButton" name="radioButton_2">
+                  <widget class="QRadioButton" name="hpRadioButton">
                    <property name="text">
                     <string>л.с.</string>
                    </property>
@@ -86,7 +86,7 @@
                 </layout>
                </item>
                <item row="3" column="0">
-                <widget class="QLabel" name="label_7">
+                <widget class="QLabel" name="countLabel">
                  <property name="text">
                   <string>Количество пассажирских 
 мест</string>
@@ -94,7 +94,7 @@
                 </widget>
                </item>
                <item row="3" column="1">
-                <widget class="QSpinBox" name="spinBox_4">
+                <widget class="QSpinBox" name="passengersCountSpinBox">
                  <property name="maximum">
                   <number>500</number>
                  </property>
@@ -115,7 +115,7 @@
                 </widget>
                </item>
                <item row="0" column="2">
-                <widget class="QComboBox" name="comboBox">
+                <widget class="QComboBox" name="tsTypeComboBox">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
                    <horstretch>0</horstretch>
@@ -157,7 +157,7 @@
                 </widget>
                </item>
                <item row="1" column="2">
-                <widget class="QSpinBox" name="spinBox">
+                <widget class="QSpinBox" name="yearSpinBox">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
                    <horstretch>0</horstretch>
@@ -173,14 +173,14 @@
                 </widget>
                </item>
                <item row="2" column="0" colspan="2">
-                <widget class="QLabel" name="label_6">
+                <widget class="QLabel" name="massLabel">
                  <property name="text">
                   <string>Разрешенная максимальная масса (кг)</string>
                  </property>
                 </widget>
                </item>
                <item row="2" column="2">
-                <widget class="QSpinBox" name="spinBox_3">
+                <widget class="QSpinBox" name="mass">
                  <property name="maximum">
                   <number>10000</number>
                  </property>
@@ -204,10 +204,10 @@
                 </widget>
                </item>
                <item row="4" column="1" colspan="2">
-                <widget class="QLineEdit" name="lineEdit_4"/>
+                <widget class="QLineEdit" name="trackLineEdit"/>
                </item>
                <item row="3" column="1" colspan="2">
-                <widget class="QLineEdit" name="lineEdit_3">
+                <widget class="QLineEdit" name="shassiLineEdit">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
                    <horstretch>0</horstretch>
@@ -236,7 +236,7 @@
                  </widget>
                 </item>
                 <item>
-                 <widget class="QLineEdit" name="lineEdit_5"/>
+                 <widget class="QLineEdit" name="serialLineEdit"/>
                 </item>
                 <item>
                  <widget class="QLabel" name="label_11">
@@ -246,7 +246,7 @@
                  </widget>
                 </item>
                 <item>
-                 <widget class="QLineEdit" name="lineEdit_6"/>
+                 <widget class="QLineEdit" name="numLineEdit"/>
                 </item>
                 <item>
                  <widget class="QLabel" name="label_12">
@@ -256,7 +256,7 @@
                  </widget>
                 </item>
                 <item>
-                 <widget class="QDateEdit" name="dateEdit"/>
+                 <widget class="QDateEdit" name="documentDateEdit"/>
                 </item>
                </layout>
               </item>
@@ -268,7 +268,7 @@
          <item>
           <layout class="QHBoxLayout" name="horizontalLayout_4">
            <item>
-            <widget class="QCheckBox" name="checkBox">
+            <widget class="QCheckBox" name="isRentalCheckBox">
              <property name="text">
               <string>ТС сдается в аренду</string>
              </property>
@@ -282,7 +282,7 @@
             </widget>
            </item>
            <item>
-            <widget class="QComboBox" name="comboBox_2">
+            <widget class="QComboBox" name="usingTypeComboBox">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
                <horstretch>0</horstretch>
@@ -297,11 +297,6 @@
              <item>
               <property name="text">
                <string>Учебная езда</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>Новый элемент</string>
               </property>
              </item>
              <item>
@@ -339,7 +334,7 @@
           </widget>
          </item>
          <item row="0" column="1">
-          <widget class="QComboBox" name="comboBox_3">
+          <widget class="QComboBox" name="classesComboBox">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
              <horstretch>0</horstretch>

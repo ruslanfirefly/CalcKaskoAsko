@@ -14,7 +14,7 @@ OsagoMaster::OsagoMaster(QObject *parent) :
     dialogs.push_back(new osagoCalcForm);
     dialogs.push_back(new OsagoBlankDataForm(&data.insurancer,Driver::Insurancer, &data.insurancerIsOwner));
     dialogs.push_back(new OsagoBlankDataForm(&data.owner,Driver::Owner, &data.insurancerIsOwner));
-    dialogs.push_back(new OsagoTsBlank(&data.insurancerIsOwner));
+    dialogs.push_back(new OsagoTsBlank(&data.transport, &data.insurancerIsOwner));
     dialogs.push_back(new OsagoUsingInfoForm);
     connect(qobject_cast<osagoCalcForm*>(dialogs.at(0)), SIGNAL(next()), this, SLOT(next()));
     connect(qobject_cast<OsagoBlankDataForm*>(dialogs.at(1)), SIGNAL(prev()), this, SLOT(prev()));

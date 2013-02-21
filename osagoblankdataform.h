@@ -12,6 +12,7 @@ class OsagoBlankDataForm : public QDialog
     Q_OBJECT
     Driver* data = nullptr;
     bool* isOwner = nullptr;
+    Driver::DriverTypes driverType;
 public:
     explicit OsagoBlankDataForm(QWidget *parent = 0);
     OsagoBlankDataForm( Driver* d,  Driver::DriverTypes dType, bool* insurancerIsOwner = false, QWidget *parent = 0);

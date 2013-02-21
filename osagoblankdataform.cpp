@@ -20,11 +20,12 @@ OsagoBlankDataForm::OsagoBlankDataForm(Driver *d, Driver::DriverTypes dType, boo
     isOwner = insurancerIsOwner;
     fillFields();
     hideFields(dType);
+    driverType = dType;
 }
 void OsagoBlankDataForm::sendNext()
 {
     fillData();
-    ui->insurancerIsOwner->isChecked() ? (emit next(2)) : (emit next(1));
+    (ui->insurancerIsOwner->isChecked() && driverType==Driver::Insurancer) ? (emit next(2)) : (emit next(1));
 }
 void OsagoBlankDataForm::hideFields(Driver::DriverTypes dType)
 {

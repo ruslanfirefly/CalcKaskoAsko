@@ -32,7 +32,7 @@ QStringListModel* osagoCalcForm::getHrn(const QString &name)
 }
 void osagoCalcForm::setComboBoxModel(const QString &tableName, QComboBox *cb, int column)
 {
-    QSqlTableModel* model = new QSqlTableModel;
+    QSqlTableModel* model = new QSqlTableModel(this, QSqlDatabase::database("my_db.sqlite"));
     model->setTable(tableName);
     model->select();
     cb->setModel(model);
@@ -57,7 +57,7 @@ void osagoCalcForm::createCompleter()
     comp->setModel(filterModel);
     completer->setCompletionMode(QCompleter::UnfilteredPopupCompletion);
     QObject::connect(ui->townLineEdit, SIGNAL(textEdited(QString)), filterModel, SLOT(setFilterRegExp(QString)));
-    //connect(ui->townLineEdit, SIGNAL(textChanged(QString)), this, SLOT(calculate()));
+
     connect(completer, SIGNAL(activated(QModelIndex)), this, SLOT(calculate()));
 }
 void osagoCalcForm::activateComboBoxes()

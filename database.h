@@ -14,11 +14,12 @@
 class dataBase : public QObject
 {
     Q_OBJECT
-    QSqlDatabase dbase;
+
 public:
     explicit dataBase(QObject *parent = 0);
     dataBase(const QString& name, QObject *parent = 0);
     ~dataBase();
+    QSqlDatabase dbase;
 signals:
     
 public slots:
@@ -26,6 +27,7 @@ public slots:
     std::shared_ptr<QSqlQuery> query(const QString& q);
     void initDb();
     void fillFromJson(const QString& path);
+
 private:
     static const QList<QString> tablesDescriptions;
 };
