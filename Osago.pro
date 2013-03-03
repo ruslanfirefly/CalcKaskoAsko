@@ -63,3 +63,12 @@ FORMS    += mainwindow.ui \
 
 RESOURCES += \
     resources.qrc
+
+OTHER_FILES += \
+    templates/polis-osago-2009 .jpg \
+    templates/osago_zayavlenie.html \
+    templates/osago_zayavlenie.back.html \
+    templates/logo.jpg \
+    templates/logo.gif \
+    templates/logo.bmp \
+    templates/blank_osago.html
