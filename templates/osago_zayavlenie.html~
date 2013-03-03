@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title></title>
+	<style>
+	.underlayner{
+		font-size: 5pt;
+		font-weight: normal;
+		margin-top: -19px;
+		text-align: center;
+	}
+	.field{
+	display: inline-block; 
+	text-align: center;
+	line-height: 10px;
+	font-size: 10pt;
+	font-weight: bold;
+	}
+	.field span:not(.decor)
+	{
+		font-size: 5pt;
+		font-weight: normal;
+		margin-top: -19px;
+		text-align: center;
+	}
+	.message{
+		font-size: 10pt;
+		font-weight: bold;
+		text-align: left;
+		font-style: italic;			
+	}
+	table.sample {
+	border-width: 1px;
+	border-spacing: 2px;
+	border-style: solid;
+	border-color: black;
+	border-collapse: collapse;
+	background-color: white;
+	text-align: center;
+}
+table.sample th {
+	border-width: 1px;
+	padding: 1px;
+	border-style: solid;
+	border-color: black;
+	background-color: white;
+	-moz-border-radius: ;
+}
+table.sample td {
+	border-width: 1px;
+	padding: 1px;
+	border-style: solid;
+	border-color: black;
+	background-color: white;
+	-moz-border-radius: ;
+}
+.data-field{
+background-color: red;
+position: absolute;
+text-align: center;
+}
+
+	</style>
+</head>
+<body>
+<div xmlns="http://www.w3.org/1999/xhtml" style="     width: 100%;      font-size: 10pt;     font-weight: bold; /*background-color : red;*/">
+	<div style="     float: left;     display: inline-block; "><img src="logo.jpg" alt="" style="     width: 3.5in; "></div>
+	<div style="     display: inline-block;     margin-left: 140px;      font-size: 7pt;     margin-top: 22px;">
+					Приложение №1<br>
+					к Правилам обязательного страхования гражданской<br>
+					ответственности владельцев транспортных средств<br>
+					ФИЛИАЛ&nbsp;___________________________________<br>
+					Агентство&nbsp;________________________________
+	</div>
+	<div style="
+    margin-top: 28px;
+    text-align: center;
+    font-size: 12pt;
+">ООО "СГ"АСКО"</div>
+<div style="
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 10px;
+">Заявление</div>
+<div style="
+    text-align: center;
+    margin-bottom: 10px;
+">о заключении договора обязательного страхования гражданской ответственности<br>владельца транспортного средства</div>
+
+
+<p class="field">1. Страхователь&nbsp; _________________________________________________________________________________________________________________<br />
+<span>(полное наименование юридического лица или фамилия, имя, отчество гражданина)</span></p><br />
+<p class="field">_______________________________________________________________<br />
+<span>(дата рождения гражданина)</span></p>&nbsp;&nbsp;&nbsp;&nbsp;
+<p class="field">____________________________________________________________<br />
+<span>(ИНН юридического лица)</span></p><br />
+<p class="field">_____________________________________________________<br />&nbsp;&nbsp;
+<span>(свидетельство о регистрации юридического лица либо документ, удостоверяющий личность)</span></p>&nbsp;&nbsp;
+<p class="field">_______________________<br />
+<span>(серия)</span></p>&nbsp;&nbsp;
+<p class="field">________________________________________________<br />
+<span>(номер)</span></p><br />
+	<p class="field">Адрес&nbsp;&nbsp;
+_____________________<br />
+	<span>(индекс)</span></p>&nbsp;&nbsp;
+		<p class="field">__________________________________________________________<br />
+	<span>(государство, республика, край, область)</span></p>&nbsp;&nbsp;
+		<p class="field">_______________________________________<br />
+	<span>(район)</span></p><br />
+			<p class="field">__________________________________________________<br />
+	<span>(населенный пункт)</span></p>&nbsp;&nbsp;
+			<p class="field">__________________________________________<br />
+	<span>(улица)</span></p>&nbsp;&nbsp;
+			<p class="field">__________<br />
+	<span>(дом)</span></p>&nbsp;&nbsp;
+			<p class="field">__________<br />
+	<span>(корпус)</span></p>&nbsp;&nbsp;
+			<p class="field">__________<br />
+	<span>(квартира)</span></p><br />
+	<p class="field">Телефон для связи:&nbsp;&nbsp;&nbsp;_____________________________________________________________________________________________________________</p>
+	<p class="message">Прошу    заключить  договор  обязательного страхования  в соответствии 
+	с  Федеральным законом   <br />«Об   обязательном   страховании   гражданской   ответственности    
+	владельцев транспортных   средств»</p>
+	<p class="field">на срок с&nbsp;&nbsp;«_____»&nbsp;&nbsp;______________&nbsp;&nbsp;_________&nbsp;г.&nbsp;&nbsp;&nbsp;&nbsp;по&nbsp;&nbsp;«_____»&nbsp;&nbsp;_____________&nbsp;&nbsp;_________&nbsp;г.</p>											
+<p class="field">2. Собственник&nbsp; _________________________________________________________________________________________________________________<br />
+<span>(полное наименование юридического лица или фамилия, имя, отчество гражданина)</span></p><br />
+<p class="field">_______________________________________________________________<br />
+<span>(дата рождения гражданина)</span></p>&nbsp;&nbsp;&nbsp;&nbsp;
+<p class="field">____________________________________________________________<br />
+<span>(ИНН юридического лица)</span></p><br />
+<p class="field">_____________________________________________________<br />&nbsp;&nbsp;
+<span>(свидетельство о регистрации юридического лица либо документ, удостоверяющий личность)</span></p>&nbsp;&nbsp;
+<p class="field">_______________________<br />
+<span>(серия)</span></p>&nbsp;&nbsp;
+<p class="field">________________________________________________<br />
+<span>(номер)</span></p><br />
+	<p class="field">Адрес&nbsp;&nbsp;
+_____________________<br />
+	<span>(индекс)</span></p>&nbsp;&nbsp;
+		<p class="field">__________________________________________________________<br />
+	<span>(государство, республика, край, область)</span></p>&nbsp;&nbsp;
+		<p class="field">_______________________________________<br />
+	<span>(район)</span></p><br />
+			<p class="field">__________________________________________________<br />
+	<span>(населенный пункт)</span></p>&nbsp;&nbsp;
+			<p class="field">__________________________________________<br />
+	<span>(улица)</span></p>&nbsp;&nbsp;
+			<p class="field">__________<br />
+	<span>(дом)</span></p>&nbsp;&nbsp;
+			<p class="field">__________<br />
+	<span>(корпус)</span></p>&nbsp;&nbsp;
+			<p class="field">__________<br />
+	<span>(квартира)</span></p><br />
+	<p class="field">Марка, модель, категория ТС&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;_________________________________________________________________</p><br />
+	<p class="field">Идентификационный номер ТС&nbsp;&nbsp;_________________________________________________________________</p><br />
+	<p class="field">Год изготовления&nbsp;&nbsp;____________<br /><span>&nbsp;</span></p>
+	<p class="field">Мощность двигателя:&nbsp;&nbsp;<br /><span>&nbsp;</span></p>
+	<p class="field">____________________<br /><span>(кВт)</span></p>
+	<p class="field">____________________<br /><span>(л.с.)</span></p><br />
+	<p class="field">Разрешенная максимальная масса:&nbsp;&nbsp;<br /><span>&nbsp;</span></p>
+		<p class="field">_____________________________________________________<br /><span>(для грузовых т.с.)</span></p><br />
+	<p class="field">Количество пассажирских мест:&nbsp;&nbsp;<br /><span>&nbsp;</span></p>
+		<p class="field">_____________________________________________________<br /><span>(для автобусов, тролейбусов и трамваев)</span></p><br />
+		<p class="field">Шасси(рама)№&nbsp;&nbsp;___________________________________</p>
+		<p class="field">Кузов(прицеп)№&nbsp;&nbsp;___________________________________</p><br />
+		<p class="field">Документ о регистрации ТС <span style=" font-size: 7pt; text-align: left;">(ПТС, свидетельство о регистрации <br />
+		технический паспорт, технический талон или аналогичный документ)</span></p>
+		<p class="field">__________________<br />
+		<span>(серия)</span></p>&nbsp;&nbsp;
+		<p class="field">_____________________________________<br />
+			<span>(номер)</span></p>
+			<p class="field">______________________<br />
+			<span>(дата выдачи)</span></p><br />
+			<p class="field">Государственный регистрационный знак&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;____________________________________________________________</p><br />
+			<p class="field">Тс сдается\не сдается в аренду </p><br />
+			<p class="field">Цель использования ТС:</p><p class="field">Личная</p><br />
+			<p class="field">Класс, зависящий от наличия страховых выплат, присвоенный собственнику ТС&nbsp;&nbsp;</p><p class="field">3</p><br />
+			<p class="field" style="text-align: left;">Количество    страховых    случаев  по предыдущему   договору   обязательного     страхования     владельцев 											
+				данного ТС				&nbsp;&nbsp;			 <p class="field">нет</p> 			&nbsp;&nbsp;	(указывается в случае, если  договором обязательного страхования  не  предусмотренно
+				условие о том, что к управлению транспортным средством допущены только указанные страхователем водители).											
+			</p>
+			<p>3. К управлению ТС допущены: </p>
+			<table>
+			<tr>
+			<td><span>-любые водители (без ограничений)</span></td>
+			<td><div  id="unlimitedDrivers" style="font-size: 18pt; text-align: center; width: 30px; height: 30px; border: 2px solid;"></div></td>			
+			</tr>
+			<td><span>-только следующие водители: </span></td>
+			<td><div id="limitDrivers" style="font-size: 18pt; text-align: center; width: 30px; height: 30px; border: 2px solid;"></div></td>	
+			</table>
+			<br />
+			<table class="sample" cellpadding="0" cellspacing="0" id="driverInfoTable">
+<!-- 				<tr>
+					<td>№<br />п\п</td>
+					<td>Фамилия, имя, отчество</td>
+					<td>Дата рождения</td>
+					<td>Пол</td>
+					<td style="max-width: 100px;">Водительское удостоверение (серия, номер когда выдано)</td>
+					<td>Стаж вождения (год, месяц)</td>
+					<td style="max-width: 170px; font-size: 7pt;">Количество страховых случаев в течение срока действия предыдущего договора обязательного страхования</td>
+					<td>Класс, зависящий от наличия страховых выплат</td>
+				</tr> -->
+				<!-- <tr>
+					<td>1</td>
+					<td>----------------</td>
+					<td>--</td>
+					<td>-</td>
+					<td style="max-width: 100px;">--</td>
+					<td>--</td>
+					<td style="max-width: 170px; font-size: 7pt;">-</td>
+					<td>-</td>
+				</tr>
+					<tr>
+					<td>2</td>
+					<td>----------------</td>
+					<td>--</td>
+					<td>-</td>
+					<td style="max-width: 100px;">--</td>
+					<td>--</td>
+					<td style="max-width: 170px; font-size: 7pt;">-</td>
+					<td>-</td>
+				</tr>
+					<tr>
+					<td>3</td>
+					<td>----------------</td>
+					<td>--</td>
+					<td>-</td>
+					<td style="max-width: 100px;">--</td>
+					<td>--</td>
+					<td style="max-width: 170px; font-size: 7pt;">-</td>
+					<td>-</td>
+				</tr>
+					<tr>
+					<td>4</td>
+					<td>----------------</td>
+					<td>--</td>
+					<td>-</td>
+					<td style="max-width: 100px;">--</td>
+					<td>--</td>
+					<td style="max-width: 170px; font-size: 7pt;">-</td>
+					<td>-</td>
+				</tr> -->
+			</table>
+			<p class="field" style=" position: absolute;">4. ТС будет использоваться только в период </p>
+			
+			<p id="usingTimes" class="field" style="line-height: initial; margin-left: 290px; margin-top: 10px;"><!-- с&nbsp;&nbsp;«___»&nbsp;&nbsp;_________&nbsp;&nbsp;______&nbsp;г.&nbsp;&nbsp;&nbsp;&nbsp;по&nbsp;&nbsp;«___»&nbsp;&nbsp;_________&nbsp;&nbsp;______&nbsp;г.<br />
+			с&nbsp;&nbsp;«___»&nbsp;&nbsp;_________&nbsp;&nbsp;______&nbsp;г.&nbsp;&nbsp;&nbsp;&nbsp;по&nbsp;&nbsp;«___»&nbsp;&nbsp;_________&nbsp;&nbsp;______&nbsp;г.<br />
+			с&nbsp;&nbsp;«___»&nbsp;&nbsp;_________&nbsp;&nbsp;______&nbsp;г.&nbsp;&nbsp;&nbsp;&nbsp;по&nbsp;&nbsp;«___»&nbsp;&nbsp;_________&nbsp;&nbsp;______&nbsp;г.<br />
+			с&nbsp;&nbsp;«___»&nbsp;&nbsp;_________&nbsp;&nbsp;______&nbsp;г.&nbsp;&nbsp;&nbsp;&nbsp;по&nbsp;&nbsp;«___»&nbsp;&nbsp;_________&nbsp;&nbsp;______&nbsp;г. -->
+			</p>
+			
+<!-- 			<p class="field">Предыдущий договор обязательного страхования гражданской ответственности владельцев транспортных средств </p><br />
+			<p class="field">в отношение указанного ТС<br /><span>&nbsp;</span></p>
+			<p class="field">&nbsp;&nbsp;____________<br /><span>(серия)</span></p>
+			<p class="field">_________________________<br /><span>(номер)</span></p><br /> -->
+			<!-- <p class="field">Страховщик: ___________________________________________________________________________</p> -->
+			<br /><p class="field" id="otherInfo">Иные сведения: </p>
+			<p class="field" style="text-align: left;line-height: initial;">
+			Достоверность   указанных   данных   подтверждаю. <br />
+			Настоящим страхователь дает свое согласие страховщику на обработку, использование и
+			предоставление сообщенных в настоящем Заявлении персональных данных в целях исполнения
+			Федерального закона "Об обязательном страховании гражданской ответственности владельцев 
+			транспортных средств".<br />
+			Правила   обязательного    страхования гражданской ответственности владельцев 
+			транспортных средств получил.
+			</p><br />
+			<p class="field">Страховой полис<br /><span>&nbsp;</span>&nbsp;&nbsp;</p>
+			<p class="field"><span class="decor" id="polisSerial" style="text-decoration : underline;">_________</span><br /><span>(серия)</span></p>
+			<p class="field"><span class="decor" id="polisNumber" style="text-decoration : underline; margin-left: 10px;">_________________________</span><br /><span>(номер)</span></p>
+			<p class="field">&nbsp;&nbsp;получил<br /><span>&nbsp;</span></p>
+			<br />
+			<p class="field" style="text-align: left;">Перечень представителей страховщика в субъектах Российской Федерации 
+			и 2 бланка извещения о дорожно-транспортном происшествии получил</p><br />
+			<p class="field">Страхователь:<br /><span></span>&nbsp;&nbsp;</p>
+				<p class="field" ><span id="insurancer" class="decor"></span><br /><span>&nbsp;</span></p>
+			<p class="field">______________________<br /><span>(подпись)</span>&nbsp;&nbsp;</p>
+			<!-- <p class="field">(________________________________)<br /><span>(ФИО)</span>&nbsp;&nbsp;&nbsp;&nbsp;</p> -->
+			<p class="field" style="margin-left: 40px;" ><span id="currentDateFirst" class="decor"></span><br /><span>&nbsp;</span></p>
+			<p class="field" style="text-align: center; margin-left: 32%;">Заполняется представителем Страховщика</p><br />
+			<p class="field">6. Страховая премия</p>
+			<table class="sample">
+			<tr>
+				<td rowspan="2">Базовая ставка</td>
+				<td colspan="7">Коэффициенты</td>
+				<td rowspan="2">Итого</td>
+			</tr>
+			<tr>	
+			<td>территории преимущественного использования ТС</td>
+			<td>наличия или отсутствия страховых выплат</td>
+			<td>возраста и стажа водителей</td>
+			<td>сезонного использования ТС</td>
+			<td>краткосрочного страхования</td>
+			<td>мощности двигателя легкового автомобиля</td>
+			<td>применяемый при грубых нарушениях условий страхования</td>
+			</tr>
+			<td>1</td>
+			<td>2</td>
+			<td>3</td>
+			<td>4</td>
+			<td>5</td>
+			<td>6</td>
+			<td>7</td>
+			<td>8</td>
+			<td>9</td>
+			<tr>
+			<td id="tb">-</td>
+			<td id="kt">-</td>
+			<td id="kbm">-</td>
+			<td id="kvs">-</td>
+			<td>-</td>
+			<td>-</td>
+			<td id="km">-</td>
+			<td >-</td>
+			<td>-</td>
+			</tr>
+			</table>
+		<p class="field" id="notes">Особые отметки:</p><br />
+		<p class="field">Представитель страховщика:<br />&nbsp;</p>
+		<p class="field" ><span id="agent" class="decor"></span><br /><span>&nbsp;</span></p>
+			<p class="field">______________________<br /><span>(подпись)</span>&nbsp;&nbsp;</p>
+			<!-- <p class="field">(________________________________)<br /><span>(ФИО)</span>&nbsp;&nbsp;&nbsp;&nbsp;</p><br /> -->
+			<p class="field" style="float: right;" ><span id="currentDateSecond" class="decor"></span><br /><span>&nbsp;</span></p>
+			</div>
+			<div class="data-field" style="min-width : 700px; top : 242px; left : 150px;" id="insurancerFio">&nbsp;&nbsp;</div>
+			<div class="data-field" style="min-width : 100px; top : 290px; left : 600px;" id="insurancerInn" >&nbsp;</div>
+			<div class="data-field" style="min-width : 100px; top : 290px; left : 168px;" id="insurancerBirthday" >&nbsp;</div>
+			<div class="data-field" style="min-width : 100px; top : 337px; left : 136px;" id="insurancerDocumentType" >&nbsp;</div>
+			<div class="data-field" style="min-width : 100px; top : 337px; left : 409px;" id="insurancerDocumentSerial" >&nbsp;</div>
+			<div class="data-field" style="min-width : 100px; top : 337px; left : 650px;" id="insurancerDocumentNum" >&nbsp;</div>
+			<!-- <div class="data-field" style="min-width : 100px; top : 337px; left : 136px;" id="insurancerDocumentType" >&nbsp;</div> -->
+			<div class="data-field" style="min-width : 100px; top : 386px; left : 64px;" id="insurancerIndex" >&nbsp;</div>
+			<div class="data-field" style="min-width : 100px; top : 386px; left : 257px;" id="insurancerCountry" >&nbsp;</div>
+			<div class="data-field" style="min-width : 100px; top : 386px; left : 649px;" id="insurancerState" >&nbsp;</div>
+			<div class="data-field" style="min-width : 100px; top : 434px; left : 65px;" id="insurancerCity" >&nbsp;</div>
+			<div class="data-field" style="min-width : 100px; top : 434px; left : 410px;" id="insurancerStreet" >&nbsp;</div>
+			<div class="data-field" style="min-width : 60px; top : 434px; left : 674px;" id="insurancerHouse" >&nbsp;</div>
+			<div class="data-field" style="min-width : 60px; top : 434px; left : 751px;" id="insurancerCorp" >&nbsp;</div>
+			<div class="data-field" style="min-width : 60px; top : 434px; left : 830px;" id="insurancerFlat" >&nbsp;</div>
+			<div class="data-field" style="min-width : 100px; top : 482px; left : 169px;" id="phone" >&nbsp;</div>
+			<div class="data-field" style="min-width : 30px; top : 580px; left : 75px;" id="fromDayIns" >&nbsp;</div>
+			<div class="data-field" style="min-width : 30px; top : 580px; left : 129px;" id="fromMonthIns" >&nbsp;</div>
+			<div class="data-field" style="min-width : 30px; top : 580px; left : 229px;" id="fromYearIns" >&nbsp;</div>
+			<div class="data-field" style="min-width : 30px; top : 580px; left : 341px;" id="toDayIns" >&nbsp;</div>
+			<div class="data-field" style="min-width : 30px; top : 580px; left : 394px;" id="toMonthIns" >&nbsp;</div>
+			<div class="data-field" style="min-width : 30px; top : 580px; left : 490px;" id="toYearIns" >&nbsp;</div>
+						<div class="data-field" style="min-width : 700px; top : 616px; left : 150px;" id="ownerFio">&nbsp;&nbsp;</div>
+			<div class="data-field" style="min-width : 100px; top : 664px; left : 600px;" id="ownerInn" >&nbsp;</div>
+			<div class="data-field" style="min-width : 100px; top : 664px; left : 168px;" id="ownerBirthday" >&nbsp;</div>
+			<div class="data-field" style="min-width : 100px; top : 712px; left : 136px;" id="ownerDocumentType" >&nbsp;</div>
+			<div class="data-field" style="min-width : 100px; top : 712px; left : 409px;" id="ownerDocumentSerial" >&nbsp;</div>
+			<div class="data-field" style="min-width : 100px; top : 712px; left : 650px;" id="ownerDocumentNum" >&nbsp;</div>
+			<!-- <div class="data-field" style="min-width : 100px; top : 337px; left : 136px;" id="ownerDocumentType" >&nbsp;</div> -->
+			<div class="data-field" style="min-width : 100px; top : 760px; left : 64px;" id="ownerIndex" >&nbsp;</div>
+			<div class="data-field" style="min-width : 100px; top : 760px; left : 257px;" id="ownerCountry" >&nbsp;</div>
+			<div class="data-field" style="min-width : 100px; top : 760px; left : 649px;" id="ownerState" >&nbsp;</div>
+			<div class="data-field" style="min-width : 100px; top : 808px; left : 65px;" id="ownerCity" >&nbsp;</div>
+			<div class="data-field" style="min-width : 100px; top : 808px; left : 410px;" id="ownerStreet" >&nbsp;</div>
+			<div class="data-field" style="min-width : 60px; top : 808px; left : 674px;" id="ownerHouse" >&nbsp;</div>
+			<div class="data-field" style="min-width : 60px; top : 808px; left : 751px;" id="ownerCorp" >&nbsp;</div>
+			<div class="data-field" style="min-width : 60px; top : 808px; left : 830px;" id="ownerFlat" >&nbsp;</div>
+			<div class="data-field" style="min-width : 60px; top : 857px; left : 218px;" id="tsModel" >&nbsp;</div>
+			<div class="data-field" style="min-width : 60px; top : 893px; left : 218px;" id="tsVin" >&nbsp;</div>
+			<div class="data-field" style="min-width : 60px; top : 1073px; left : 114px;" id="tsShassi" >&nbsp;</div>
+			<div class="data-field" style="min-width : 60px; top : 1073px; left : 467px;" id="tsTrack" >&nbsp;</div>
+			<div class="data-field" style="min-width : 60px; top : 1110px; left : 326px;" id="tsSerial" >&nbsp;</div>
+			<div class="data-field" style="min-width : 60px; top : 1110px; left : 492px;" id="tsNumber" >&nbsp;</div>
+			<!-- <div class="data-field" style="min-width : 60px; top : 1110px; left : 755px;" id="tsDate" >&nbsp;</div>	 -->		
+			<div class="data-field" style="min-width : 60px; top : 1158px; left : 408px;" id="tsGosNumber" >&nbsp;</div>
+			<div class="data-field" style="min-width : 60px; top : 929px; left : 521px;" id="tsPowerKWt" >&nbsp;</div>
+			<div class="data-field" style="min-width : 60px; top : 929px; left : 379px;" id="tsPowerHp" >&nbsp;</div>
+			<div class="data-field" style="min-width : 60px; top : 1025px; left : 220px;" id="tsPassengersCount" >&nbsp;</div>
+			<div class="data-field" style="min-width : 60px; top : 929px; left : 128px;" id="tsYear" >&nbsp;</div>
+			<div class="data-field" style="min-width : 60px; top : 976px; left : 232px;" id="tsMass" >&nbsp;</div>
+			<div class="data-field" style="min-width : 29px; top : 1306px; left : 673px;" id="tsCountOfIncidents" >&nbsp;</div>
+			<!-- <div class="data-field" style="min-width : 60px; top : 808px; left : 830px;" id="tsPType" >&nbsp;</div> -->
+			<div class="data-field" style="min-width : 60px; top : 856px; left : 569px;" id="tsTCat" >&nbsp;</div>
+			<div class="data-field" style="min-width : 60px; top : 1110px; left : 750px;" id="tsDocumentDate" >&nbsp;</div>
+			<div class="data-field" style="min-width : 60px; top : 1234px; left : 155px;" id="tsUType" >&nbsp;</div>
+			<div class="data-field" style="min-width : 60px; top : 1270px; left : 488px;" id="tsClassOwner" >&nbsp;</div>
+			<div class="data-field" style="text-decoration : underline; min-width : 110px; top : 1200px; left : 26px;" id="tsIsRental" >&nbsp;</div>
+			
+</body>
+</html>

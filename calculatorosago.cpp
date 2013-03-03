@@ -2,6 +2,7 @@
 #include <algorithm>
 const QList<int> CalculatorOsago::ignore_power_auto_types = { 2, 4, 5, 7, 8, 9, 10, 11, 12 };
 const QList<int> CalculatorOsago::trailers_auto_types = { 6, 13, 3};
+OsagoCoeffs CalculatorOsago::coeffs;
 CalculatorOsago::CalculatorOsago(QObject *parent) :
     QObject(parent)
 {
@@ -65,7 +66,14 @@ qreal CalculatorOsago::calculate(QMap<QString,QModelIndex> *data)
     {
         kvs = 1.7;
     }
-
+    coeffs.tb = tb;
+    coeffs.kt = kt;
+    coeffs.kbm = kbm;
+    coeffs.kvs = kvs;
+    coeffs.ko = ko;
+    coeffs.km = km;
+    coeffs.ks = ks;
+    coeffs.kp = kp;
     return tb*kt*kbm*kvs*ko*km*ks*kp;
 }
 QVariant CalculatorOsago::getData(QModelIndex index, int column)

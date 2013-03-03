@@ -7,13 +7,13 @@
     <x>0</x>
     <y>0</y>
     <width>780</width>
-    <height>412</height>
+    <height>522</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Сведения о ТС</string>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout_6">
+  <layout class="QHBoxLayout" name="horizontalLayout_6">
    <item>
     <layout class="QVBoxLayout" name="verticalLayout_5">
      <item>
@@ -114,41 +114,6 @@
                  </property>
                 </widget>
                </item>
-               <item row="0" column="2">
-                <widget class="QComboBox" name="tsTypeComboBox">
-                 <property name="sizePolicy">
-                  <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                   <horstretch>0</horstretch>
-                   <verstretch>0</verstretch>
-                  </sizepolicy>
-                 </property>
-                 <item>
-                  <property name="text">
-                   <string>A</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>B</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>C</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>D</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>E</string>
-                  </property>
-                 </item>
-                </widget>
-               </item>
                <item row="1" column="0">
                 <widget class="QLabel" name="label_4">
                  <property name="text">
@@ -216,6 +181,41 @@
                  </property>
                 </widget>
                </item>
+               <item row="0" column="2">
+                <widget class="QComboBox" name="tsTypeComboBox">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <item>
+                  <property name="text">
+                   <string>A</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>B</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>C</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>D</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>E</string>
+                  </property>
+                 </item>
+                </widget>
+               </item>
               </layout>
              </item>
             </layout>
@@ -225,8 +225,39 @@
              <property name="title">
               <string>Документ о регистрации ТС</string>
              </property>
-             <layout class="QHBoxLayout" name="horizontalLayout_2">
-              <item>
+             <layout class="QGridLayout" name="gridLayout_4">
+              <item row="2" column="1">
+               <widget class="QComboBox" name="documentTypeComboBox">
+                <item>
+                 <property name="text">
+                  <string>Паспорт транспортного средства</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Свидетельство о регистрации</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Технический паспорт</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Паспорт самоходной машины</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="2" column="0">
+               <widget class="QLabel" name="label_6">
+                <property name="text">
+                 <string>Тип документа</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="0" colspan="2">
                <layout class="QHBoxLayout" name="horizontalLayout">
                 <item>
                  <widget class="QLabel" name="label_10">
@@ -262,6 +293,20 @@
               </item>
              </layout>
             </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_2">
+           <item>
+            <widget class="QLabel" name="label_7">
+             <property name="text">
+              <string>Государственный регистрационный номер</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="gosNumber"/>
            </item>
           </layout>
          </item>
@@ -323,7 +368,7 @@
        <item>
         <layout class="QGridLayout" name="gridLayout_3">
          <item row="1" column="1">
-          <widget class="QSpinBox" name="spinBox_5"/>
+          <widget class="QSpinBox" name="incidentsSpinBox"/>
          </item>
          <item row="0" column="0">
           <widget class="QLabel" name="label_15">

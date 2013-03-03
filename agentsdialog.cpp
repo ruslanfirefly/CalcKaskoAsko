@@ -25,6 +25,9 @@ void agentsDialog::closeEvent(QCloseEvent *e)
 agentsDialog::agentsDialog(dataBase* base, QWidget *parent) :  agentsDialog(parent)
 {
     db = base;
+    qDebug()<<db->agentsDb.connectionName();
+    bool t = db->agentsDb.open();
+    model = std::shared_ptr<QSqlTableModel>(new QSqlTableModel(this, QSqlDatabase::database(db->agentsDb.connectionName())));
     model->setTable("agents");
     model->select();
     model->setEditStrategy(QSqlTableModel::OnManualSubmit);
@@ -54,6 +57,7 @@ void agentsDialog::addAgent()
     if(!ui->agentsTable->model()->insertRow(0));
     {
         qDebug()<<"Error"<<model->database().lastError().text();
+        qDebug()<<"Error"<<model->lastError().text();
     }
     ui->agentsTable->setFocus();
     this->ui->agentsTable->edit(this->ui->agentsTable->model()->index(0,0));

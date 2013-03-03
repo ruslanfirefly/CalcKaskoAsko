@@ -8,6 +8,8 @@ OsagoBlankDataForm::OsagoBlankDataForm(QWidget *parent) :
     ui->setupUi(this);
     connect(this->ui->nextButton, SIGNAL(clicked()), this, SLOT(sendNext()));
     connect(this->ui->prevPushButton, SIGNAL(clicked()), this, SIGNAL(prev()));
+    connect(this->ui->nextButton, SIGNAL(clicked()), this, SLOT(fillData()));
+    connect(this->ui->prevPushButton, SIGNAL(clicked()), this, SLOT(fillData()));
 }
 
 OsagoBlankDataForm::~OsagoBlankDataForm()
@@ -21,6 +23,7 @@ OsagoBlankDataForm::OsagoBlankDataForm(Driver *d, Driver::DriverTypes dType, boo
     fillFields();
     hideFields(dType);
     driverType = dType;
+    on_checkBox_stateChanged(ui->checkBox->checkState());
 }
 void OsagoBlankDataForm::sendNext()
 {
@@ -37,7 +40,7 @@ void OsagoBlankDataForm::fillFields()
 {
     ui->insurancerIsOwner->setChecked(*isOwner);
     ui->fioLineEdit->setText(data->fio);
-    ui->dateInnLineEdit->setText(QString::number(data->inn));
+    ui->dateInnLineEdit->setText(data->inn);
     ui->serialLineEdit->setText(data->ser);
     ui->numberLineEdit->setText(data->number);
     ui->typeLineEdit->setText(data->documentType);
@@ -50,13 +53,15 @@ void OsagoBlankDataForm::fillFields()
     ui->corp->setText(data->addr.corp);
     ui->flat->setText(data->addr.flat);
     ui->phone->setText(data->phone);
+    ui->birthday->setDate(data->birthday);
+    ui->checkBox->setChecked(!data->fizik);
 }
 
 void OsagoBlankDataForm::fillData()
 {
     (*isOwner) = ui->insurancerIsOwner->isChecked();
     data->fio = ui->fioLineEdit->text();
-    data->inn = ui->dateInnLineEdit->text().toULongLong();
+    data->inn = ui->dateInnLineEdit->text();
     data->ser = ui->serialLineEdit->text();
     data->number = ui->numberLineEdit->text();
     data->documentType = ui->typeLineEdit->text();
@@ -69,4 +74,25 @@ void OsagoBlankDataForm::fillData()
     data->addr.corp = ui->corp->text();
     data->addr.flat = ui->flat->text();
     data->phone = ui->phone->text();
+    data->birthday = ui->birthday->date();
+    data->fizik = !ui->checkBox->isChecked();
+
+}
+
+void OsagoBlankDataForm::on_checkBox_stateChanged(int state)
+{
+    if(state == Qt::Checked)
+    {
+        ui->insurancerNameLabel->setText(tr("Наименование юридического лица"));
+        ui->dateInnLabel->setText(tr("ИНН юридического лица"));
+        ui->birthday->hide();
+        ui->dateInnLineEdit->show();
+    }
+    else
+    {
+         ui->insurancerNameLabel->setText(tr("Фамилия, имя, отчество гражданина"));
+         ui->dateInnLabel->setText(tr("Дата рождения гражданина"));
+         ui->birthday->show();
+         ui->dateInnLineEdit->hide();
+    }
 }

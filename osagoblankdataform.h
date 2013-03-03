@@ -22,6 +22,8 @@ private slots:
     void hideFields(Driver::DriverTypes dType);
     void fillData();
     void sendNext();
+    void on_checkBox_stateChanged(int arg1);
+
 private:
     Ui::OsagoBlankDataForm *ui;
 signals:

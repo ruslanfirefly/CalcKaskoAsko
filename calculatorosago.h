@@ -5,6 +5,7 @@
 #include <QMap>
 #include <QString>
 #include <QModelIndex>
+#include "dataObjects.h"
 class CalculatorOsago : public QObject
 {
     Q_OBJECT
@@ -14,6 +15,7 @@ public:
     static qreal calculate(QMap<QString,QModelIndex>  * data);
     static const QList<int> ignore_power_auto_types;
     static const QList<int> trailers_auto_types;
+    static OsagoCoeffs coeffs;
 signals:
     
 public slots:

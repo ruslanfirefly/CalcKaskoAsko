@@ -3,6 +3,7 @@
 
 #include <QDialog>
 #include <QGridLayout>
+#include <dataObjects.h>
 namespace Ui {
 class OsagoUsingInfoForm;
 }
@@ -13,7 +14,7 @@ class OsagoUsingInfoForm : public QDialog
     const int maxDrivers = 4, maxDateIntervals = 4;
     int currentDrivers, currentDateIntervals;
 public:
-    explicit OsagoUsingInfoForm(QWidget *parent = 0);
+    explicit OsagoUsingInfoForm(OsagoData* d, QWidget *parent = 0);
     ~OsagoUsingInfoForm();
 private slots:
     void hideDriver();
@@ -26,6 +27,10 @@ private slots:
     void setUnlimDriversEnabled(bool);
     void lastOsagoContractEnable(bool);
     void on_printRequest_clicked();
+    void fillFields();
+    void fillData();
+    void fillComboBoxes();
+    void on_compareWithUsing_stateChanged(int arg1);
 
 signals:
     void prev();
@@ -34,6 +39,7 @@ signals:
     void printBlank();
 private:
     Ui::OsagoUsingInfoForm *ui;
+    OsagoData* data;
 };
 
 #endif // OSAGOUSINGINFOFORM_H

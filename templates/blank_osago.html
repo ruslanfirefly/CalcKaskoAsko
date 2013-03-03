@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title></title>
+<style>
+	img {
+		margin-left: -10px;
+		margin-top: -10px;
+	}
+	div{
+		background-color: red;
+	}
+	#insurancer{
+		position: absolute;
+		min-width: 970px;
+		top: 455px;
+		left: 37px;
+		max-width: 970px;
+		text-align: center;
+		font-size: 16pt;
+	}
+	#owner{
+		position: absolute;
+		min-width: 970px;
+		top: 545px;
+		left: 37px;
+		max-width: 970px;
+		text-align: center;
+		font-size: 16pt;
+	}
+	#tsModel{
+		position: absolute;
+		min-width: 302px;
+		top: 638px;
+		left: 37px;
+		max-width: 302px;
+		text-align: center;
+		font-size: 16pt;
+	}
+	#tsVin{
+		position: absolute;
+		min-width: 302px;
+		top: 642px;
+		left: 360px;
+		max-width: 302px;
+		font-size: 16pt;
+		background-color: transparent;
+		letter-spacing: 0.65em;
+		font-family: monospace;
+	}
+	#tsGosNumber{
+		position: absolute;
+		min-width: 200px;
+		top: 638px;
+		left: 807px;
+		max-width: 200px;
+		text-align: center;
+		font-size: 16pt;
+	}
+	#documentType{
+		position: absolute;
+		min-width: 473px;
+		top: 697px;
+		left: 134px;
+		max-width: 473px;
+		text-align: center;
+		font-size: 16pt;
+	}
+	#documentNumber{
+		position: absolute;
+		min-width: 151px;
+		top: 697px;
+		left: 862px;
+		max-width: 151px;
+		text-align: center;
+		font-size: 16pt;
+	}
+	#documentSerial{
+		position: absolute;
+		min-width: 150px;
+		top: 697px;
+		left: 655px;
+		max-width: 150px;
+		text-align: center;
+		font-size: 16pt;
+	}
+	#limitDriversTable{
+		position: absolute;		
+		top: 746px;
+		left: 795px;
+		text-align: center;
+		font-size: 16pt;
+	}
+	#limitDriversTable td{
+		border-width: 1px;
+		padding: 1px;
+	}
+	#limitDriversTable div{
+		font-size: 18pt; 
+		text-align: center; 
+		width: 36px; 
+		height: 23px;
+	}
+</style>
+</head>
+<body>
+<img src="polis-osago-2009 .jpg" style="width : 11in; height=12.008in;">
+<div id="insurancer">Иванов Иван Иванович</div>
+<div id="owner">Петров Петр Петрович</div>
+<div id="tsModel">KIA CERATO</div>
+<div id="tsVin">1234567890AZXSDFV</div>
+<div id="tsGosNumber">K150XT</div>
+<div id="documentType">Паспорт транспортного средства</div>
+<div id="documentNumber">7406</div>
+<div id="documentSerial">0000000</div>
+<table id="limitDriversTable">
+	<tr>			
+		<td><div  id="unlimitedDrivers">X</div></td>			
+	</tr>
+	<tr>			
+		<td><div id="limitDrivers"></div></td>
+	</tr>
+</table>
+</body>
+</html>

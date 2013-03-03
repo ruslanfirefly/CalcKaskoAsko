@@ -11,9 +11,16 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    /*db = new dataBase("agents.db");
+    db->connectDB();
+    db->initAgentsDb();
     db = new dataBase("calc.db");
     db->connectDB();
+    db->initDb();*/
+    db = new dataBase();
+    db->connectDB();
     db->initDb();
+
 
 
 #ifdef BUILD_WITH_EDITOR

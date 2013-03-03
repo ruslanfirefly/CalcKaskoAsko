@@ -23,6 +23,9 @@ void Printer::printPreview(const QString &s)
 }
 void Printer::printPreview(QWebView* view)
 {
+    printer = new QPrinter;
+    prevDlg = new  QPrintPreviewDialog(printer);
+
     QObject::connect(prevDlg, SIGNAL(paintRequested(QPrinter*)), view, SLOT(print(QPrinter*)));
     prevDlg->exec();
 }

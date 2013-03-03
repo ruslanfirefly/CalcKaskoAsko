@@ -6,17 +6,12 @@
 #include <QTextCodec>
 #include <QApplication>
 #include <QProgressBar>
+QSqlDatabase dataBase::dbase = QSqlDatabase();
+QSqlDatabase dataBase::agentsDb = QSqlDatabase();
 const QList<QString> dataBase::tablesDescriptions =
 {
     "PRAGMA foreign_keys=ON",
-  " CREATE TABLE IF NOT EXISTS agents("
-  "first_name TEXT,"
-  "second_name TEXT,"
-  "third_name TEXT,"
-  "number TEXT,"
-  "date INTEGER,"
-  "PRIMARY KEY(number, date)"
-  ")",
+
     " CREATE TABLE IF NOT EXISTS auto_types("
     "hrn TEXT,"
     "coeff INTEGER,"
@@ -64,6 +59,18 @@ const QList<QString> dataBase::tablesDescriptions =
     "hrn TEXT"
     ")"
 
+};
+const QList<QString> dataBase::agentsTablesDescriptions =
+{
+    "PRAGMA foreign_keys=ON",
+    " CREATE TABLE IF NOT EXISTS agents("
+    "first_name TEXT,"
+    "second_name TEXT,"
+    "third_name TEXT,"
+    "number TEXT,"
+    "date INTEGER,"
+    "PRIMARY KEY(number, date)"
+    ")"
 };
 void dataBase::fillFromJson(const QString &path)
 {
@@ -119,6 +126,7 @@ void dataBase::fillFromJson(const QString &path)
 
 void dataBase::initDb()
 {
+
     std::for_each(dataBase::tablesDescriptions.begin(), dataBase::tablesDescriptions.end(),
                   [this](const QString& desc){
         try
@@ -130,13 +138,28 @@ void dataBase::initDb()
             qDebug()<<exc.err().text();
         }
     });
+    initAgentsDb();
 }
-
+void dataBase::initAgentsDb()
+{
+    foreach (const QString& desc, agentsTablesDescriptions) {
+        try
+        {
+            query(desc, agentsDb.connectionName());
+        }
+        catch (const SqlException& exc)
+        {
+            qDebug()<<exc.err().text();
+        }
+    }
+}
 dataBase::dataBase(QObject *parent) :
     QObject(parent)
 {
-    dbase = QSqlDatabase::addDatabase("QSQLITE");
-    dbase.setDatabaseName("my_db.sqlite");
+    dbase = QSqlDatabase::addDatabase("QSQLITE", "calc.db");
+    dbase.setDatabaseName("calc.db");
+    agentsDb = QSqlDatabase::addDatabase("QSQLITE", "agents.db");
+    agentsDb.setDatabaseName("agents.db");
 }
 dataBase::~dataBase()
 {
@@ -150,16 +173,24 @@ void dataBase::connectDB()
         qDebug() << "Что-то не так с соединением!";
         throw std::runtime_error("Cant connect to db");
     }
-
+    if (!agentsDb.open()) {
+        qDebug() << "Что-то не так с соединением!";
+        throw std::runtime_error("Cant connect to agentsdb");
+    }
 }
 dataBase::dataBase(const QString &name, QObject *parent)
 {
-    dbase = QSqlDatabase::addDatabase("QSQLITE");
+    dbase = QSqlDatabase::addDatabase("QSQLITE", name);
     dbase.setDatabaseName(name);
 }
 std::shared_ptr<QSqlQuery> dataBase::query(const QString &q)
 {
-    std::shared_ptr<QSqlQuery> db_query(new QSqlQuery);
+    return query(q, dbase.connectionName());
+}
+
+std::shared_ptr<QSqlQuery> dataBase::query(const QString& q, const QString& dbName)
+{
+    std::shared_ptr<QSqlQuery> db_query(new QSqlQuery("", QSqlDatabase::database(dbName)));
     if(db_query->exec(q))
     {
         return db_query;

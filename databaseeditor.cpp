@@ -7,6 +7,7 @@
 #include <QFileDialog>
 #include <QMessageBox>
 #include "custom_exceptions.h"
+#include "database.h"
 dataBaseEditor::dataBaseEditor(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::dataBaseEditor)
@@ -32,7 +33,8 @@ dataBaseEditor::~dataBaseEditor()
 QList<QString> dataBaseEditor::getTables()
 {
     QList<QString> tables;
-    QSqlQuery query("SELECT name FROM sqlite_master WHERE type='table' ORDER BY name");
+    QSqlQuery query("SELECT name FROM sqlite_master WHERE type='table' ORDER BY name",
+                    QSqlDatabase::database(dataBase::dbase.connectionName()));
     while (query.next()) {
         QString table = query.value(0).toString();
         tables.push_back(table);
@@ -42,7 +44,7 @@ QList<QString> dataBaseEditor::getTables()
 void dataBaseEditor::changeModel(QString name)
 {
     ui->tableView->model()->deleteLater();
-    QSqlTableModel* model = new QSqlTableModel();
+    QSqlTableModel* model = new QSqlTableModel(this, QSqlDatabase::database(dataBase::dbase.connectionName()));
     model->setTable(name);
     model->select();
     model->setEditStrategy(QSqlTableModel::OnFieldChange);

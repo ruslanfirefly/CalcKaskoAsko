@@ -22,6 +22,7 @@ private:
 private slots:
     void sendPrev();
     void fillFields();
+    void fillData();
     //void on_passengersCount_activated(int index);
 
     void on_tsTypeComboBox_activated(int index);
