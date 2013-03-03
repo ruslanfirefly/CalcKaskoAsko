@@ -17,6 +17,7 @@ typedef QPair<QDate, QDate> PairDates;
 const QVector<QString> OsagoMaster::categories = { "A", "B", "C", "D", "E" };
 const QVector<const char*> OsagoMaster::usingTypes = { "Личная", "Учебная езда", "Такси", "Дорожные и специальные", "Другое" };
 const QVector<const char*> OsagoMaster::sexes = { "М", "Ж" };
+const QVector<const char*> OsagoMaster::docTypes = { "Паспорт транспортного средства", "Свидетельство о регистрации", "Технический паспорт", "Паспорт самоходной машины"};
 OsagoMaster::OsagoMaster(QObject *parent) :
     QObject(parent)
 {
@@ -71,8 +72,94 @@ void OsagoMaster::printBlank()
 }
 void OsagoMaster::printBlankPreview()
 {
-   // Printer::getInstance().printPreview(qobject_cast<QWebView*>(sender()));
+
     QWebView* view = qobject_cast<QWebView*>(sender());
+    QWebFrame* frame = view->page()->currentFrame();
+    frame->findFirstElement("#insurancer").setPlainText(data.insurancer.fio);
+    frame->findFirstElement("#owner").setPlainText(data.owner.fio);
+    frame->findFirstElement("#tsModel").setPlainText(data.transport.model);
+    frame->findFirstElement("#tsVin").setPlainText(data.transport.vin==""?tr("ОТСУТСТВУЕТ"):data.transport.vin);
+    frame->findFirstElement("#tsGosNumber").setPlainText(data.transport.gosNumber);
+    frame->findFirstElement("#documentType").setPlainText(docTypes[data.transport.documentType]);
+    frame->findFirstElement("#documentNumber").setPlainText(data.transport.number);
+    frame->findFirstElement("#documentSerial").setPlainText(data.transport.serial);
+     QWebElementCollection driversRows = frame->findFirstElement("#driversTable").findAll("tr");
+    switch(data.dCount)
+    {
+    case OsagoData::LimitDrivers:
+        frame->findFirstElement("#limitDrivers").setPlainText("X");
+
+        for(int row = 0; row < data.drivers.count(); ++row)
+        {
+            QWebElementCollection driversColums = driversRows[row].findAll("td");
+            driversColums[0].setPlainText(QString::number(row+1));
+            driversColums[1].setPlainText(data.drivers[row].fio);
+            driversColums[2].setPlainText(data.drivers[row].driverLicence);
+        }
+        break;
+    case OsagoData::UnlimitedDrivers:
+        frame->findFirstElement("#unlimitedDrivers").setPlainText("X");
+        break;
+    }
+
+    frame->findFirstElement("#sum").setPlainText(QString::number(data.coeffs.sum));
+    frame->findFirstElement("#notes").setPlainText(data.notes);
+    QDate current = QDate::currentDate();
+    frame->findFirstElement("#contractDate").setInnerXml(
+                QString("<tr><td>%1</td><td>%2</td><td>%3</td></tr>")
+                .arg(current.toString("dd"))
+                .arg(current.toString("MMMM"))
+                .arg(current.toString("yy"))
+
+                );
+    frame->findFirstElement("#polisDate").setInnerXml(
+                QString("<tr><td>%1</td><td>%2</td><td>%3</td></tr>")
+                .arg(current.toString("dd"))
+                .arg(current.toString("MMMM"))
+                .arg(current.toString("yy"))
+
+                );
+    QDateTime currentDT = QDateTime::currentDateTime();
+    QDateTime fromDateTime = currentDT;
+    if(currentDT.date() <= data.from) fromDateTime.setDate(data.from);
+
+    frame->findFirstElement("#contractPeriodStart").setInnerXml(
+                QString(QString("<tr>")+
+                "<td>%1</td>"+
+                "<td>%2</td>"+
+                "<td>%3</td>"+
+                "<td>%4</td>"+
+                "<td>%5</td>"+
+                "</tr>"+
+                " <tr>"+
+                "<td></td>"+
+                "<td></td>"+
+                "<td>%6</td>"+
+                "<td>%7</td>"
+                "<td>%8</td>"+
+                "</tr>")
+                .arg(fromDateTime.toString("hh"))
+                .arg(fromDateTime.toString("mm"))
+                .arg(fromDateTime.toString("dd"))
+                .arg(fromDateTime.toString("MM"))
+                .arg(fromDateTime.toString("yy"))
+                .arg(data.to.toString("dd"))
+                .arg(data.to.toString("MM"))
+                .arg(data.to.toString("yy"))
+                );
+
+    QWebElementCollection periods = frame->findFirstElement("#usingPeriods").findAll("td");
+
+
+    for(int p = 0; p < data.usingPeriods.count(); ++p)
+    {
+        periods[0+p*6].setPlainText(data.usingPeriods[p].first.toString("dd"));
+        periods[1+p*6].setPlainText(data.usingPeriods[p].first.toString("MM"));
+        periods[2+p*6].setPlainText(data.usingPeriods[p].first.toString("yy"));
+        periods[3+p*6].setPlainText(data.usingPeriods[p].second.toString("dd"));
+        periods[4+p*6].setPlainText(data.usingPeriods[p].second.toString("MM"));
+        periods[5+p*6].setPlainText(data.usingPeriods[p].second.toString("yy"));
+    }
     QPrinter* printer = new QPrinter;
     QPrintPreviewDialog* prevDlg = new  QPrintPreviewDialog(printer);
     printer->setPageMargins(0,0,0,0, QPrinter::Inch);

@@ -18,6 +18,8 @@ public:
     static const QVector<QString> categories;
     static const QVector<const char*> usingTypes;
     static const QVector<const char*> sexes;
+    static const QVector<const char*> docTypes;
+
 signals:
     
 public slots:

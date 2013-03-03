@@ -74,7 +74,8 @@ qreal CalculatorOsago::calculate(QMap<QString,QModelIndex> *data)
     coeffs.km = km;
     coeffs.ks = ks;
     coeffs.kp = kp;
-    return tb*kt*kbm*kvs*ko*km*ks*kp;
+    coeffs.sum = tb*kt*kbm*kvs*ko*km*ks*kp;
+    return coeffs.sum;
 }
 QVariant CalculatorOsago::getData(QModelIndex index, int column)
 {

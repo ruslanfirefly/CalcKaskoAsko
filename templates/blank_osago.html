@@ -102,6 +102,140 @@
 		width: 36px; 
 		height: 23px;
 	}
+	#driversTable{
+		position: absolute;		
+		top: 832px;
+		left: 46px;
+		text-align: center;
+		font-size: 16pt;
+	}
+	#driversTable td{
+		border-width: 0px;
+		padding: 0px;		
+	}	
+	#driversTable tr td:first-child {
+		padding-right: 18px;
+	}
+	#driversTable tr td:first-child + td {
+		min-width: 611px;
+		padding-right: 20px;
+	}
+	#driversTable tr td:first-child + td + td{
+		min-width: 293px;
+		
+	}
+	#sum{
+		position: absolute;		
+		top: 1146px;
+		left: 499px;
+		text-align: center;
+		font-size: 16pt;
+		min-width: 100px;
+	}
+	#notes{
+		position: absolute;		
+		top: 1215px;
+		left: 50px;
+		text-align: center;
+		font-size: 16pt;
+		min-width: 100px;
+	}
+	#contractDate{
+		position: absolute;		
+		top: 1273px;
+		left: 273px;
+		text-align: center;
+		font-size: 16pt;		
+	}
+	#contractDate tr td:first-child{
+		padding-right: 20px;
+	}
+	#contractDate tr td:first-child + td{
+		padding-right: 20px;
+		min-width: 150px;
+	}
+	#polisDate{
+		position: absolute;		
+		top: 1435px;
+		left: 610px;
+		text-align: center;
+		font-size: 16pt;		
+	}
+	#polisDate tr td:first-child{
+		padding-right: 20px;
+	}
+	#polisDate tr td:first-child + td{
+		padding-right: 20px;
+		min-width: 150px;
+	}
+	#contractPeriodStart{
+		position: absolute;		
+		top: 202px;
+		left: 619px;
+		text-align: center;
+		font-size: 16pt;		
+	}
+	#contractPeriodStart td{
+		letter-spacing: 10px;
+		padding-bottom: 10px;
+	}
+	#contractPeriodStart tr td:first-child{
+		padding-right: 37px;
+		letter-spacing: 10px;
+	}
+	#contractPeriodStart tr td:first-child + td{
+		padding-right: 56px;		
+	}
+	#contractPeriodStart tr td:first-child + td + td{
+		padding-right: 20px;		
+	}
+	#contractPeriodStart tr td:first-child + td + td + td{
+		padding-right: 51px;		
+	}
+	#usingPeriods{
+		position: absolute;		
+		top: 337px;
+		left: 60px;
+		text-align: center;
+		font-size: 16pt;		
+	}
+	#usingPeriods td{
+		letter-spacing: 10px;
+		padding-bottom: 1px;
+	}
+	#usingPeriods tr td:first-child{ 
+		padding-right: 20px;		
+	}
+	#usingPeriods tr td:first-child + td{
+		padding-right: 38px;		
+	}
+	#usingPeriods tr td:first-child + td + td{
+		padding-right: 65px;		
+	}
+	#usingPeriods tr td:first-child + td + td + td{
+		padding-right: 19px;		
+	}
+	#usingPeriods tr td:first-child + td + td + td + td{
+		padding-right: 38px;		
+	}
+	#usingPeriods tr td:first-child + td + td + td + td + td{
+		padding-right: 58px;		
+	}
+	#usingPeriods tr td:first-child + td + td + td + td + td +td{
+		padding-right: 19px;		
+	}
+	#usingPeriods tr td:first-child + td + td + td + td + td + td + td{
+		padding-right: 38px;		
+	}
+	#usingPeriods tr td:first-child + td + td + td + td + td + td + td + td{
+		padding-right: 67px;		
+	}
+	#usingPeriods tr td:first-child + td + td + td + td + td + td + td + td + td{
+		padding-right: 16px;		
+	}
+	#usingPeriods tr td:first-child + td + td + td + td + td + td + td + td + td + td{
+		padding-right: 38px;		
+	}
 </style>
 </head>
 <body>
@@ -116,10 +250,93 @@
 <div id="documentSerial">0000000</div>
 <table id="limitDriversTable">
 	<tr>			
-		<td><div  id="unlimitedDrivers">X</div></td>			
+		<td><div  id="unlimitedDrivers"></div></td>			
 	</tr>
 	<tr>			
 		<td><div id="limitDrivers"></div></td>
+	</tr>
+</table>
+<table id="driversTable">
+	<tr>
+		<td>1</td>
+		<td>************************************************************</td>
+		<td>********************</td>
+	</tr>
+	<tr>
+		<td>2</td>
+		<td>************************************************************</td>
+		<td>********************</td>
+	</tr>
+	<tr>
+		<td>3</td>
+		<td>************************************************************</td>
+		<td>********************</td>
+	</tr>
+	<tr>
+		<td>4</td>
+		<td>************************************************************</td>
+		<td>********************</td>
+	</tr>
+	<tr>
+		<td>5</td>
+		<td>************************************************************</td>
+		<td>********************</td>
+	</tr>
+</table>
+<div id="sum">100</div>
+<div id="notes">Особая отметка</div>
+<table id="contractDate">
+	<tr>
+		<td>29</td>
+		<td>января</td>
+		<td>13</td>
+	</tr>
+</table>
+<table id="polisDate">
+	<tr>
+		<td>29</td>
+		<td>января</td>
+		<td>13</td>
+	</tr>
+</table>
+<table id="contractPeriodStart">
+	<tr>
+		<td>00</td>
+		<td>00</td>
+		<td>00</td>
+		<td>00</td>
+		<td>00</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td>00</td>
+		<td>00</td>
+		<td>00</td>
+	</tr>
+</table>
+<table id="usingPeriods">
+	<tr>
+		<td>00</td>
+		<td>00</td>
+		<td>00</td>
+		<td>00</td>
+		<td>00</td>
+		<td>00</td>
+		<td>00</td>
+		<td>00</td>
+		<td>00</td>
+		<td>00</td>
+		<td>00</td>
+		<td>00</td>		
+	</tr>
+	<tr>
+		<td>00</td>
+		<td>00</td>
+		<td>00</td>
+		<td>00</td>
+		<td>00</td>
+		<td>00</td>
 	</tr>
 </table>
 </body>

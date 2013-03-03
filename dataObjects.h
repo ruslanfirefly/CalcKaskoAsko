@@ -61,6 +61,7 @@ struct OsagoCoeffs
     qreal km;
     qreal ks;
     qreal kp;
+    qreal sum;
 };
 
 struct OsagoData
