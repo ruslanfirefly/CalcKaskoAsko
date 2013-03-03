@@ -71,4 +71,5 @@ OTHER_FILES += \
     templates/logo.jpg \
     templates/logo.gif \
     templates/logo.bmp \
-    templates/blank_osago.html
+    templates/blank_osago.html \
+    Osago.db.json
