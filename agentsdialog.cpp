@@ -38,7 +38,7 @@ agentsDialog::agentsDialog(dataBase* base, QWidget *parent) :  agentsDialog(pare
     model->setHeaderData(4,Qt::Horizontal, tr("Contract's date"));
     ui->agentsTable->setModel(model.get());
     ui->agentsTable->setItemDelegateForColumn(4,new DateDelegate(ui->agentsTable));
-    ui->agentsTable->horizontalHeader()->setResizeMode(QHeaderView::ResizeToContents);
+    //ui->agentsTable->horizontalHeader()->setResizeMode(QHeaderView::ResizeToContents);
     connect(ui->agentsTable->horizontalHeader(), SIGNAL(sectionResized(int,int,int)), this, SLOT(adjust()));
     connect(this->ui->addAgentButton, SIGNAL(clicked()), this, SLOT(addAgent()));
     connect(this->ui->delAgentButton, SIGNAL(clicked()), this, SLOT(delAgent()));

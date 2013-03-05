@@ -1,5 +1,5 @@
 #include <QtGui>
-
+#include <QDateEdit>
 #include "dateDelegate.h"
 DateDelegate::DateDelegate(QObject *parent)
     : QStyledItemDelegate(parent)

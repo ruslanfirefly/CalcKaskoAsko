@@ -14,7 +14,7 @@ dataBaseEditor::dataBaseEditor(QWidget *parent) :
 {
     ui->setupUi(this);
     ui->tablesNames->setModel(new QStringListModel(getTables()));
-    ui->tableView->horizontalHeader()->setResizeMode(QHeaderView::ResizeToContents);
+    //ui->tableView->horizontalHeader()->setResizeMode(QHeaderView::ResizeToContents);
     connect(ui->tablesNames, SIGNAL(activated(QString)), this, SLOT(changeModel(QString)));
 }
 dataBaseEditor::dataBaseEditor(dataBase *d, QWidget *parent) : dataBaseEditor(parent)

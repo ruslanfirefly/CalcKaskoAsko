@@ -6,7 +6,9 @@
 #include <QDialog>
 #include "osagocalcform.h"
 #include "dataObjects.h"
-#include <QtWebKit/QWebFrame>
+//#include <QtWebKit/QWebFrame>
+#include <QtWebKitWidgets/QWebFrame>
+#include <QtWebKitWidgets/QWebView>
 class OsagoMaster : public QObject
 {
     Q_OBJECT
@@ -32,7 +34,8 @@ public slots:
     void printRequestPreview();
     void printBlankPreview();
     void printBlank();
-
+    void printThrowImage(QWebView* view);
+    void startPrintThrowImage();
 private:
     QString createLastOsagoInfo(OsagoData* data);
     QString createUsingInfo(const QPair<QDate, QDate> *usingPeriods);

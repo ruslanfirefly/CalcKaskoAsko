@@ -3,9 +3,10 @@
 
 #include <QObject>
 #include <QTextEdit>
-#include <QPrinter>
-#include <QPrintPreviewDialog>
-#include <QtWebKit/QWebView>
+
+#include <QtPrintSupport/QPrinter>
+#include <QtPrintSupport/QPrintPreviewDialog>
+#include <QtWebKitWidgets/QWebView>
 class Printer
 {
     Printer();

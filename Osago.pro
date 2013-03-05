@@ -7,13 +7,13 @@ DEFINES += BUILD_WITH_EDITOR
 RESOURCES += resources.qrc
 
 QMAKE_CXXFLAGS += -std=c++11
-QMAKE_CXXFLAGS_DEBUG += -std=c++11
-QMAKE_CXXFLAGS += -g
-QMAKE_CXXFLAGS_DEBUG += -g
-CONFIG += debug
+#QMAKE_CXXFLAGS_DEBUG += -std=c++11
+#QMAKE_CXXFLAGS += -g
+#QMAKE_CXXFLAGS_DEBUG += -g
+#CONFIG += debug
 QT       += core gui
 QT += sql
-QT += webkit
+QT += webkit webkitwidgets printsupport
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -35,7 +35,8 @@ SOURCES += main.cpp\
     osagoblankdataform.cpp \
     osagomaster.cpp \
     osagotsblank.cpp \
-    osagousinginfoform.cpp
+    osagousinginfoform.cpp \
+    printwebview.cpp
 
 HEADERS  += mainwindow.h \
     agentsdialog.h \
@@ -51,7 +52,8 @@ HEADERS  += mainwindow.h \
     osagomaster.h \
     osagotsblank.h \
     osagousinginfoform.h \
-    dataObjects.h
+    dataObjects.h \
+    printwebview.h
 
 FORMS    += mainwindow.ui \
     agentsdialog.ui \
@@ -59,7 +61,8 @@ FORMS    += mainwindow.ui \
     osagocalcform.ui \
     osagoblankdataform.ui \
     osagotsblank.ui \
-    osagousinginfoform.ui
+    osagousinginfoform.ui \
+    printwebview.ui
 
 RESOURCES += \
     resources.qrc

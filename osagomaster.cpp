@@ -4,15 +4,19 @@
 #include "osagotsblank.h"
 #include "osagousinginfoform.h"
 #include <stdexcept>
-#include <QtWebKit/QWebView>
-#include <QtWebKit/QWebFrame>
+#include <QtWebKitWidgets/QWebView>
+#include <QtWebKitWidgets/QWebFrame>
 #include <QtWebKit/QWebElement>
 #include <QApplication>
 #include <printer.h>
 #include <QSqlTableModel>
-#include <QPrinter>
-#include <QPrintDialog>
-#include <QPrintPreviewDialog>
+#include <QtPrintSupport/QPrinter>
+#include <QtPrintSupport/QPrintDialog>
+#include <QtPrintSupport/QPrintPreviewDialog>
+#include <QDir>
+#include <QMessageBox>
+#include <QPushButton>
+#include <printwebview.h>
 typedef QPair<QDate, QDate> PairDates;
 const QVector<QString> OsagoMaster::categories = { "A", "B", "C", "D", "E" };
 const QVector<const char*> OsagoMaster::usingTypes = { "Личная", "Учебная езда", "Такси", "Дорожные и специальные", "Другое" };
@@ -67,7 +71,8 @@ void OsagoMaster::step(int s)
 void OsagoMaster::printBlank()
 {
     QWebView* tmpView = new QWebView();
-    tmpView->load(QUrl("file://"+qApp->applicationDirPath()+"/templates/blank_osago.html"));
+    QUrl url = QUrl::fromLocalFile(QDir::toNativeSeparators(qApp->applicationDirPath()+"/templates/blank_osago.html"));
+    tmpView->load(url);
     connect(tmpView, SIGNAL(loadFinished(bool)), this, SLOT(printBlankPreview()));
 }
 void OsagoMaster::printBlankPreview()
@@ -160,18 +165,53 @@ void OsagoMaster::printBlankPreview()
         periods[4+p*6].setPlainText(data.usingPeriods[p].second.toString("MM"));
         periods[5+p*6].setPlainText(data.usingPeriods[p].second.toString("yy"));
     }
+    //view->show();
+    printWebView* dlg = new printWebView();
+    dlg->setViewPage(view->page());
+    dlg->setModal(true);
+    dlg->exec();
+    connect(view, SLOT(close()), this, SLOT(startPrintThrowImage()));
+    //printThrowImage(view);
+
+}
+void OsagoMaster::startPrintThrowImage()
+{
+    printThrowImage(qobject_cast<QWebView*>(sender()));
+}
+
+void OsagoMaster::printThrowImage(QWebView* view)
+{
     QPrinter* printer = new QPrinter;
-    QPrintPreviewDialog* prevDlg = new  QPrintPreviewDialog(printer);
+    QWebFrame* frame = view->page()->currentFrame();
     printer->setPageMargins(0,0,0,0, QPrinter::Inch);
-    printer->setFullPage(true);
-    QObject::connect(prevDlg, SIGNAL(paintRequested(QPrinter*)), view, SLOT(print(QPrinter*)));
-    prevDlg->exec();
+    view->page()->setViewportSize(frame->contentsSize());
+    QImage image(view->page()->viewportSize(), QImage::Format_ARGB32);
+    QPainter painter(&image);
+    view->page()->mainFrame()->render(&painter);
+    painter.end();
+    QPrintDialog* dlg = new QPrintDialog;
+    if(dlg->exec() == QDialog::Accepted)
+    {
+        printer = dlg->printer();
+        printer->setPageSize(QPrinter::A4);
+        QPainter p(printer);
+        QSizeF size = printer->pageSizeMM();
+
+        QImage scaledImage = image.scaled(size.width()*image.dotsPerMeterX()/1000, size.height()*image.dotsPerMeterY()/1000
+                                          , Qt::IgnoreAspectRatio
+                                          , Qt::SmoothTransformation);
+
+        p.drawImage(QPoint(0,0), scaledImage);
+        p.end();
+    }
+
 }
 
 void OsagoMaster::printRequest()
 {
     QWebView* tmpView = new QWebView();
-    tmpView->load(QUrl("file://"+qApp->applicationDirPath()+"/templates/osago_zayavlenie.html"));
+    QUrl url = QUrl::fromLocalFile(QDir::toNativeSeparators(qApp->applicationDirPath()+"/templates/osago_zayavlenie.html"));
+    tmpView->load(url);
     connect(tmpView, SIGNAL(loadFinished(bool)), this, SLOT(printRequestPreview()));
 
 }
