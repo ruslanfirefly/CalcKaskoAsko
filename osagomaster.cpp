@@ -41,9 +41,9 @@ OsagoMaster::OsagoMaster(QObject *parent) :
     connect(qobject_cast<OsagoUsingInfoForm*>(dialogs.at(4)), SIGNAL(printRequest()), this, SLOT(printRequest()));
     connect(qobject_cast<OsagoUsingInfoForm*>(dialogs.at(4)), SIGNAL(printBlank()), this, SLOT(printBlank()));
     dialogs.at(0)->show();
-    foreach (QDialog* dial, dialogs) {
+    /*foreach (QDialog* dial, dialogs) {
         dial->setModal(true);
-    }
+    }*/
 
 }
 void OsagoMaster::next()
@@ -166,14 +166,18 @@ void OsagoMaster::printBlankPreview()
         periods[5+p*6].setPlainText(data.usingPeriods[p].second.toString("yy"));
     }
     //view->show();
-    printWebView* dlg = new printWebView();
-    dlg->setViewPage(view->page());
-    dlg->setModal(true);
-    dlg->exec();
-    connect(view, SLOT(close()), this, SLOT(startPrintThrowImage()));
-    //printThrowImage(view);
+    printWebViewDialog(view, printWebView::IMAGE);
 
 }
+void OsagoMaster::printWebViewDialog(QWebView *view, printWebView::printType t)
+{
+    printWebView* dlg = new printWebView();
+    dlg->setViewPage(view->page(), t);
+    dlg->setModal(true);
+    dlg->setWindowState(Qt::WindowMaximized);
+    dlg->show();
+}
+
 void OsagoMaster::startPrintThrowImage()
 {
     printThrowImage(qobject_cast<QWebView*>(sender()));
@@ -181,29 +185,6 @@ void OsagoMaster::startPrintThrowImage()
 
 void OsagoMaster::printThrowImage(QWebView* view)
 {
-    QPrinter* printer = new QPrinter;
-    QWebFrame* frame = view->page()->currentFrame();
-    printer->setPageMargins(0,0,0,0, QPrinter::Inch);
-    view->page()->setViewportSize(frame->contentsSize());
-    QImage image(view->page()->viewportSize(), QImage::Format_ARGB32);
-    QPainter painter(&image);
-    view->page()->mainFrame()->render(&painter);
-    painter.end();
-    QPrintDialog* dlg = new QPrintDialog;
-    if(dlg->exec() == QDialog::Accepted)
-    {
-        printer = dlg->printer();
-        printer->setPageSize(QPrinter::A4);
-        QPainter p(printer);
-        QSizeF size = printer->pageSizeMM();
-
-        QImage scaledImage = image.scaled(size.width()*image.dotsPerMeterX()/1000, size.height()*image.dotsPerMeterY()/1000
-                                          , Qt::IgnoreAspectRatio
-                                          , Qt::SmoothTransformation);
-
-        p.drawImage(QPoint(0,0), scaledImage);
-        p.end();
-    }
 
 }
 
@@ -303,7 +284,7 @@ void OsagoMaster::printRequestPreview()
     fillTextField("#kt", QString::number(data.coeffs.kt), frame);
     fillTextField("#kvs", QString::number(data.coeffs.kvs), frame);
     fillTextField("#tb", QString::number(data.coeffs.tb), frame);
-    Printer::getInstance().printPreview(qobject_cast<QWebView*>(sender()));
+    printWebViewDialog(view, printWebView::HTML);
 }
 QString OsagoMaster::createUsingInfo(const QPair<QDate, QDate> *usingPeriods)
 {

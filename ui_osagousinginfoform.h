@@ -222,6 +222,7 @@ public:
 
         dateEdit_2 = new QDateEdit(groupBox_2);
         dateEdit_2->setObjectName(QStringLiteral("dateEdit_2"));
+        dateEdit_2->setCalendarPopup(true);
 
         driversGridLayout->addWidget(dateEdit_2, 1, 1, 1, 1);
 
@@ -288,6 +289,7 @@ public:
 
         dateEdit_4 = new QDateEdit(groupBox_2);
         dateEdit_4->setObjectName(QStringLiteral("dateEdit_4"));
+        dateEdit_4->setCalendarPopup(true);
 
         driversGridLayout->addWidget(dateEdit_4, 2, 1, 1, 1);
 
@@ -318,6 +320,7 @@ public:
 
         dateEdit_6 = new QDateEdit(groupBox_2);
         dateEdit_6->setObjectName(QStringLiteral("dateEdit_6"));
+        dateEdit_6->setCalendarPopup(true);
 
         driversGridLayout->addWidget(dateEdit_6, 3, 1, 1, 1);
 
@@ -328,6 +331,7 @@ public:
 
         dateEdit_8 = new QDateEdit(groupBox_2);
         dateEdit_8->setObjectName(QStringLiteral("dateEdit_8"));
+        dateEdit_8->setCalendarPopup(true);
 
         driversGridLayout->addWidget(dateEdit_8, 4, 1, 1, 1);
 
@@ -417,6 +421,7 @@ public:
 
         fromInsDate = new QDateEdit(groupBox_5);
         fromInsDate->setObjectName(QStringLiteral("fromInsDate"));
+        fromInsDate->setCalendarPopup(true);
 
         horizontalLayout_9->addWidget(fromInsDate);
 
@@ -427,6 +432,7 @@ public:
 
         toInsDate = new QDateEdit(groupBox_5);
         toInsDate->setObjectName(QStringLiteral("toInsDate"));
+        toInsDate->setCalendarPopup(true);
 
         horizontalLayout_9->addWidget(toInsDate);
 
@@ -456,11 +462,13 @@ public:
 
         dateEdit = new QDateEdit(usingPeriodsGroupBox);
         dateEdit->setObjectName(QStringLiteral("dateEdit"));
+        dateEdit->setCalendarPopup(true);
 
         timeGridLayout->addWidget(dateEdit, 1, 1, 1, 2);
 
         dateEdit_12 = new QDateEdit(usingPeriodsGroupBox);
         dateEdit_12->setObjectName(QStringLiteral("dateEdit_12"));
+        dateEdit_12->setCalendarPopup(true);
 
         timeGridLayout->addWidget(dateEdit_12, 2, 1, 1, 2);
 
@@ -471,6 +479,7 @@ public:
 
         dateEdit_14 = new QDateEdit(usingPeriodsGroupBox);
         dateEdit_14->setObjectName(QStringLiteral("dateEdit_14"));
+        dateEdit_14->setCalendarPopup(true);
 
         timeGridLayout->addWidget(dateEdit_14, 3, 1, 1, 2);
 
@@ -524,11 +533,13 @@ public:
 
         dateEdit_10 = new QDateEdit(usingPeriodsGroupBox);
         dateEdit_10->setObjectName(QStringLiteral("dateEdit_10"));
+        dateEdit_10->setCalendarPopup(true);
 
         timeGridLayout->addWidget(dateEdit_10, 1, 4, 1, 1);
 
         dateEdit_16 = new QDateEdit(usingPeriodsGroupBox);
         dateEdit_16->setObjectName(QStringLiteral("dateEdit_16"));
+        dateEdit_16->setCalendarPopup(true);
 
         timeGridLayout->addWidget(dateEdit_16, 4, 1, 1, 2);
 
@@ -544,16 +555,19 @@ public:
 
         dateEdit_15 = new QDateEdit(usingPeriodsGroupBox);
         dateEdit_15->setObjectName(QStringLiteral("dateEdit_15"));
+        dateEdit_15->setCalendarPopup(true);
 
         timeGridLayout->addWidget(dateEdit_15, 4, 4, 1, 1);
 
         dateEdit_13 = new QDateEdit(usingPeriodsGroupBox);
         dateEdit_13->setObjectName(QStringLiteral("dateEdit_13"));
+        dateEdit_13->setCalendarPopup(true);
 
         timeGridLayout->addWidget(dateEdit_13, 3, 4, 1, 1);
 
         dateEdit_11 = new QDateEdit(usingPeriodsGroupBox);
         dateEdit_11->setObjectName(QStringLiteral("dateEdit_11"));
+        dateEdit_11->setCalendarPopup(true);
 
         timeGridLayout->addWidget(dateEdit_11, 2, 4, 1, 1);
 
@@ -724,8 +738,6 @@ public:
 
         verticalLayout_6->addLayout(gridLayout);
 
-        label_25->raise();
-        agentsComboBox->raise();
 
         retranslateUi(OsagoUsingInfoForm);
 

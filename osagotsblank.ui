@@ -287,7 +287,11 @@
                  </widget>
                 </item>
                 <item>
-                 <widget class="QDateEdit" name="documentDateEdit"/>
+                 <widget class="QDateEdit" name="documentDateEdit">
+                  <property name="calendarPopup">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
                 </item>
                </layout>
               </item>

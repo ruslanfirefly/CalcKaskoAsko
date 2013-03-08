@@ -9,6 +9,7 @@
 //#include <QtWebKit/QWebFrame>
 #include <QtWebKitWidgets/QWebFrame>
 #include <QtWebKitWidgets/QWebView>
+#include "printwebview.h"
 class OsagoMaster : public QObject
 {
     Q_OBJECT
@@ -43,6 +44,7 @@ private:
     void fillTextField(const QString& id, const QString& text, QWebFrame* frame);
     void fillDriverData(const QString& prefix, Driver* driver, QWebFrame* frame);
     void fillDriverInfoTable(QList<DriverInfo> info, QWebFrame* frame);
+    void printWebViewDialog(QWebView* v, printWebView::printType);
 };
 
 #endif // OSAGOMASTER_H

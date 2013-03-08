@@ -129,7 +129,11 @@
              <widget class="QLineEdit" name="lineEdit_13"/>
             </item>
             <item row="1" column="1">
-             <widget class="QDateEdit" name="dateEdit_2"/>
+             <widget class="QDateEdit" name="dateEdit_2">
+              <property name="calendarPopup">
+               <bool>true</bool>
+              </property>
+             </widget>
             </item>
             <item row="3" column="2">
              <widget class="QComboBox" name="comboBox_7">
@@ -224,7 +228,11 @@
              <widget class="QComboBox" name="comboBox_2"/>
             </item>
             <item row="2" column="1">
-             <widget class="QDateEdit" name="dateEdit_4"/>
+             <widget class="QDateEdit" name="dateEdit_4">
+              <property name="calendarPopup">
+               <bool>true</bool>
+              </property>
+             </widget>
             </item>
             <item row="1" column="5">
              <widget class="QComboBox" name="comboBox"/>
@@ -246,13 +254,21 @@
              <widget class="QLineEdit" name="lineEdit_14"/>
             </item>
             <item row="3" column="1">
-             <widget class="QDateEdit" name="dateEdit_6"/>
+             <widget class="QDateEdit" name="dateEdit_6">
+              <property name="calendarPopup">
+               <bool>true</bool>
+              </property>
+             </widget>
             </item>
             <item row="2" column="3">
              <widget class="QLineEdit" name="lineEdit_11"/>
             </item>
             <item row="4" column="1">
-             <widget class="QDateEdit" name="dateEdit_8"/>
+             <widget class="QDateEdit" name="dateEdit_8">
+              <property name="calendarPopup">
+               <bool>true</bool>
+              </property>
+             </widget>
             </item>
             <item row="0" column="3">
              <widget class="QLabel" name="label_10">
@@ -334,7 +350,11 @@
              </widget>
             </item>
             <item>
-             <widget class="QDateEdit" name="fromInsDate"/>
+             <widget class="QDateEdit" name="fromInsDate">
+              <property name="calendarPopup">
+               <bool>true</bool>
+              </property>
+             </widget>
             </item>
             <item>
              <widget class="QLabel" name="label_23">
@@ -344,7 +364,11 @@
              </widget>
             </item>
             <item>
-             <widget class="QDateEdit" name="toInsDate"/>
+             <widget class="QDateEdit" name="toInsDate">
+              <property name="calendarPopup">
+               <bool>true</bool>
+              </property>
+             </widget>
             </item>
            </layout>
           </item>
@@ -382,10 +406,18 @@
            </spacer>
           </item>
           <item row="1" column="1" colspan="2">
-           <widget class="QDateEdit" name="dateEdit"/>
+           <widget class="QDateEdit" name="dateEdit">
+            <property name="calendarPopup">
+             <bool>true</bool>
+            </property>
+           </widget>
           </item>
           <item row="2" column="1" colspan="2">
-           <widget class="QDateEdit" name="dateEdit_12"/>
+           <widget class="QDateEdit" name="dateEdit_12">
+            <property name="calendarPopup">
+             <bool>true</bool>
+            </property>
+           </widget>
           </item>
           <item row="3" column="0">
            <widget class="QLabel" name="label_5">
@@ -395,7 +427,11 @@
            </widget>
           </item>
           <item row="3" column="1" colspan="2">
-           <widget class="QDateEdit" name="dateEdit_14"/>
+           <widget class="QDateEdit" name="dateEdit_14">
+            <property name="calendarPopup">
+             <bool>true</bool>
+            </property>
+           </widget>
           </item>
           <item row="2" column="3">
            <widget class="QLabel" name="label_4">
@@ -487,10 +523,18 @@
            </widget>
           </item>
           <item row="1" column="4">
-           <widget class="QDateEdit" name="dateEdit_10"/>
+           <widget class="QDateEdit" name="dateEdit_10">
+            <property name="calendarPopup">
+             <bool>true</bool>
+            </property>
+           </widget>
           </item>
           <item row="4" column="1" colspan="2">
-           <widget class="QDateEdit" name="dateEdit_16"/>
+           <widget class="QDateEdit" name="dateEdit_16">
+            <property name="calendarPopup">
+             <bool>true</bool>
+            </property>
+           </widget>
           </item>
           <item row="2" column="0">
            <widget class="QLabel" name="label_3">
@@ -507,13 +551,25 @@
            </widget>
           </item>
           <item row="4" column="4">
-           <widget class="QDateEdit" name="dateEdit_15"/>
+           <widget class="QDateEdit" name="dateEdit_15">
+            <property name="calendarPopup">
+             <bool>true</bool>
+            </property>
+           </widget>
           </item>
           <item row="3" column="4">
-           <widget class="QDateEdit" name="dateEdit_13"/>
+           <widget class="QDateEdit" name="dateEdit_13">
+            <property name="calendarPopup">
+             <bool>true</bool>
+            </property>
+           </widget>
           </item>
           <item row="2" column="4">
-           <widget class="QDateEdit" name="dateEdit_11"/>
+           <widget class="QDateEdit" name="dateEdit_11">
+            <property name="calendarPopup">
+             <bool>true</bool>
+            </property>
+           </widget>
           </item>
          </layout>
         </item>
@@ -696,8 +752,6 @@
    </item>
   </layout>
   <zorder></zorder>
-  <zorder>label_25</zorder>
-  <zorder>agentsComboBox</zorder>
  </widget>
  <resources/>
  <connections/>

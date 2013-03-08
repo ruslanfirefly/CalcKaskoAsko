@@ -68,7 +68,7 @@ public:
     void retranslateUi(QDialog *printWebView)
     {
         printWebView->setWindowTitle(QApplication::translate("printWebView", "Dialog", 0));
-        printButton->setText(QApplication::translate("printWebView", "PushButton", 0));
+        printButton->setText(QApplication::translate("printWebView", "\320\237\320\265\321\207\320\260\321\202\321\214", 0));
     } // retranslateUi
 
 };

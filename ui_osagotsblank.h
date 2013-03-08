@@ -286,6 +286,7 @@ public:
 
         documentDateEdit = new QDateEdit(groupBox);
         documentDateEdit->setObjectName(QStringLiteral("documentDateEdit"));
+        documentDateEdit->setCalendarPopup(true);
 
         horizontalLayout->addWidget(documentDateEdit);
 

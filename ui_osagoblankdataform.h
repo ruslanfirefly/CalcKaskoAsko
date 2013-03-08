@@ -101,6 +101,7 @@ public:
         gridLayout_3->setObjectName(QStringLiteral("gridLayout_3"));
         birthday = new QDateEdit(groupBox);
         birthday->setObjectName(QStringLiteral("birthday"));
+        birthday->setCalendarPopup(true);
 
         gridLayout_3->addWidget(birthday, 2, 1, 1, 1);
 
