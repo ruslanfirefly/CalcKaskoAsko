@@ -104,10 +104,24 @@ void osagoCalcForm::calculate()
       foreach (QComboBox* cb, cbs) {
           data[cb->property("tableName").toString()] = cb->view()->selectionModel()->currentIndex();
       }
-      data[ui->townLineEdit->property("tableName").toString()] = ui->townLineEdit->completer()->currentIndex();
+      data[ui->townLineEdit->property("tableName").toString()] = getTownIndex();//ui->townLineEdit->completer()->currentIndex();
       if( t.compare("") == 0 ) return;
       ui->bonus->setText(QString::number(CalculatorOsago::calculate(&data), 'f', 2));
      osagoData->coeffs = CalculatorOsago::coeffs;
+}
+QModelIndex osagoCalcForm::getTownIndex()
+{
+    int i = ui->townLineEdit->completer()->model()->rowCount();
+    QAbstractItemModel* m = ui->townLineEdit->completer()->model();
+    for(int row=0; row<m->rowCount(); ++row)
+    {
+        QString model = m->index(row, 1).data().toString();
+        QString entModel = ui->townLineEdit->text();
+        if(model == entModel)
+        {
+            return m->index(row,1);
+        }
+    }
 }
 
 void osagoCalcForm::on_pushButton_clicked()

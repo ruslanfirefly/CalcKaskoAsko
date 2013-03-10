@@ -26,6 +26,7 @@ Ui::osagoCalcForm *ui;
     void setComboBoxModel(const QString& tableName, QComboBox* cb, int column = 0);
     void createCompleter();
     void activateComboBoxes();
+    QModelIndex getTownIndex();
 private slots:
     void calculate();
     void on_pushButton_clicked();

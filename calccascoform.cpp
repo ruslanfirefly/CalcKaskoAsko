@@ -99,7 +99,13 @@ void calcCascoForm::calculate()
     qreal agesCoeff = getCoefFromIndex(ui->agesComboBox->view()->selectionModel()->currentIndex());
     qreal transCoeff = getCoefFromIndex(ui->transComboBox->view()->selectionModel()->currentIndex());
     qreal tarif = (modelCoeff + yearCoeff)*agesCoeff*transCoeff;
-    ui->tarif->setText(QString::number(tarif)+"%");
+    ui->tarif->setText(QString("(%1 + %3) * %2 * %4 = %5")
+                       .arg(modelCoeff)
+                       .arg(agesCoeff)
+                       .arg(yearCoeff)
+                       .arg(transCoeff)
+                       .arg(tarif)
+                       );
     ui->prem->setText(QString::number(tarif*ui->premSpinBox->value()/100, 'f', 3) + tr(" тыс. руб"));
 }
 qreal calcCascoForm::getCoefFromIndex(QModelIndex index)
