@@ -28,11 +28,13 @@ void calcCascoForm::createModelField()
     QCompleter *comp=ui->modelLineEdit->completer();
     comp->setCaseSensitivity(Qt::CaseInsensitive);
     QSortFilterProxyModel *filterModel=new QSortFilterProxyModel(comp);
+    sortModel = filterModel;
     filterModel->setSourceModel(model);
     filterModel->setFilterKeyColumn(0);
     filterModel->setFilterCaseSensitivity(Qt::CaseInsensitive);
     comp->setModel(filterModel);
     completer->setCompletionMode(QCompleter::UnfilteredPopupCompletion);
+
     QObject::connect(ui->modelLineEdit, SIGNAL(textEdited(QString)), filterModel, SLOT(setFilterRegExp(QString)));
     connect(comp, SIGNAL(activated(QModelIndex)), this, SLOT(changeCarModel(QModelIndex)));
     connect(comp, SIGNAL(activated(QModelIndex)), this, SLOT(calculate()));
@@ -45,6 +47,7 @@ void calcCascoForm::changeCarModel(QModelIndex index)
     QString queryText(QString("SELECT * from autos_dops WHERE auto=%1").arg(id));
     QSqlQueryModel* m = new QSqlQueryModel(this);
     m->setQuery(queryText, QSqlDatabase::database(dataBase::cascoDb.connectionName()));
+
     if(m->rowCount()>0)
     {
         ui->dopInfo->show();
@@ -90,7 +93,8 @@ calcCascoForm::~calcCascoForm()
 void calcCascoForm::calculate()
 {
     if(ui->modelLineEdit->text() == "") return;
-    qreal modelCoeff = getCoefFromIndex(ui->modelLineEdit->completer()->currentIndex());
+    qreal modelCoeff = getCoefFromModelLineEDit();
+    //qreal modelCoeff = getCoefFromIndex(ui->modelLineEdit->completer()->currentIndex());
     qreal yearCoeff = getCoefFromIndex(ui->yearComboBox->view()->selectionModel()->currentIndex());
     qreal agesCoeff = getCoefFromIndex(ui->agesComboBox->view()->selectionModel()->currentIndex());
     qreal transCoeff = getCoefFromIndex(ui->transComboBox->view()->selectionModel()->currentIndex());
@@ -109,7 +113,21 @@ qreal calcCascoForm::getCoefFromIndex(QModelIndex index)
     }
     else
     {
-        auto data = m->index(index.row(),1).data().toString().replace(',','.');
         return m->index(index.row(),1).data().toString().replace(',','.').toDouble();
     }
+}
+qreal calcCascoForm::getCoefFromModelLineEDit()
+{
+    int i = ui->modelLineEdit->completer()->model()->rowCount();
+    QAbstractItemModel* m = ui->modelLineEdit->completer()->model();
+    for(int row=0; row<m->rowCount(); ++row)
+    {
+        QString model = m->index(row, 0).data().toString();
+        QString entModel = ui->modelLineEdit->text();
+        if(model == entModel)
+        {
+            return m->index(row, 1).data().toString().replace(',','.').toDouble();
+        }
+    }
+    return 0;
 }

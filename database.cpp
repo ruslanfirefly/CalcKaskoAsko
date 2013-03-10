@@ -202,6 +202,7 @@ void dataBase::initCascoDb()
         try
         {
             query(desc, cascoDb.connectionName());
+
         }
         catch (const SqlException& exc)
         {

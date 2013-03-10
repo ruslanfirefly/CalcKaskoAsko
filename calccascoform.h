@@ -4,6 +4,7 @@
 #include <QDialog>
 #include <QComboBox>
 #include <QModelIndex>
+#include <QSortFilterProxyModel>
 namespace Ui {
 class calcCascoForm;
 }
@@ -22,7 +23,9 @@ private:
     void createModelField();
     void activateComboBoxes();
     void setComboBoxModel(const QString &tableName, QComboBox *cb, int column);
-     qreal getCoefFromIndex(QModelIndex);
+    qreal getCoefFromIndex(QModelIndex);
+    qreal getCoefFromModelLineEDit();
+     QSortFilterProxyModel* sortModel;
 private slots:
     void calculate();
 
