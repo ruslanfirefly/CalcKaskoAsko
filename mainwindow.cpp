@@ -6,6 +6,7 @@
 #include <QAction>
 #include "osagocalcform.h"
 #include "osagomaster.h"
+#include "cascomaster.h"
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -20,6 +21,7 @@ MainWindow::MainWindow(QWidget *parent) :
     db = new dataBase();
     db->connectDB();
     db->initDb();
+
 
 
 
@@ -40,7 +42,7 @@ void MainWindow::openDbEditor()
 MainWindow::~MainWindow()
 {
     delete ui;
-
+    delete db;
 }
 
 void MainWindow::on_action_triggered()
@@ -56,4 +58,9 @@ void MainWindow::on_pushButton_clicked()
     //ad->setModal(true);
     //ad->show();
     OsagoMaster* m = new OsagoMaster(this);
+}
+
+void MainWindow::on_cascoPushButton_clicked()
+{
+    CascoMaster* m = new CascoMaster(this);
 }

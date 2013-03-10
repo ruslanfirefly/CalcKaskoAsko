@@ -6,8 +6,12 @@
 #include <QTextCodec>
 #include <QApplication>
 #include <QProgressBar>
+#include <QSqlTableModel>
+#include <QSqlRecord>
+#include <QSqlField>
 QSqlDatabase dataBase::dbase = QSqlDatabase();
 QSqlDatabase dataBase::agentsDb = QSqlDatabase();
+QSqlDatabase dataBase::cascoDb = QSqlDatabase();
 const QList<QString> dataBase::tablesDescriptions =
 {
     "PRAGMA foreign_keys=ON",
@@ -72,6 +76,56 @@ const QList<QString> dataBase::agentsTablesDescriptions =
     "PRIMARY KEY(number, date)"
     ")"
 };
+const QList<QString> dataBase::cascoTableDescriptions=
+{
+    "PRAGMA foreign_keys=ON",
+    "CREATE TABLE IF NOT EXISTS auto_marks("
+    "name TEXT,"
+    "PRIMARY KEY(name)"
+    ")"
+    ,"CREATE TABLE IF NOT EXISTS auto_models("
+    "id INTEGER,"
+    "name TEXT,"
+    "mark TEXT,"
+    "coeff REAL,"
+    "FOREIGN KEY (mark) REFERENCES auto_marks (name)"
+    ")"
+    ,"CREATE TABLE IF NOT EXISTS dops("
+    "name TEXT,"
+    "PRIMARY KEY(name)"
+    ")"
+    ,"CREATE TABLE IF NOT EXISTS autos_dops("
+    "auto INTEGER,"
+    "dops TEXT"
+//    "FOREIGN KEY (auto) REFERENCES auto_models (id),"
+//    "FOREIGN KEY (dops) REFERENCES dops (name)"
+    ")"
+};
+
+QList<QStringList> dataBase::parseCSVFile(const QString &name)
+{
+    QFile file(name);
+    QList<QStringList> lst;
+    if(file.open(QIODevice::ReadOnly | QIODevice::Text))
+    {
+        while(!file.atEnd())
+        {
+            //lst.push_back(parseCSVString(file.readLine()));
+            QString csvString = file.readLine();
+            while(csvString.count('"')%2 != 0)
+            {
+                csvString.append(file.readLine());
+            }
+            lst.push_back(parseCSVString(csvString));
+        }
+    }
+    return lst;
+}
+QStringList dataBase::parseCSVString( QString &string)
+{
+
+    return string.replace("\"","").split("|");
+}
 void dataBase::fillFromJson(const QString &path)
 {
     QProgressBar bar;
@@ -139,6 +193,143 @@ void dataBase::initDb()
         }
     });
     initAgentsDb();
+    initCascoDb();
+}
+void dataBase::initCascoDb()
+{
+
+    foreach (const QString& desc, cascoTableDescriptions) {
+        try
+        {
+            query(desc, cascoDb.connectionName());
+        }
+        catch (const SqlException& exc)
+        {
+            qDebug()<<exc.err().text();
+        }
+    }
+    fillCascoData(parseCSVFile("casco.csv"));
+}
+void dataBase::fillCascoData(const QList<QStringList> &data)
+{
+    //fillCascoMarks(data);
+    //fillCascoModels(data);
+    //fillCascoDops(data);
+    //bindDopsToModel(data);
+}
+bool dataBase::checkDopsString(const QString &dops, const QString& dop)
+{
+    return dops.contains(dop);
+}
+void dataBase::bindDopsToModel(const QList<QStringList> &datas)
+{
+    QSqlTableModel* model = new QSqlTableModel(this, QSqlDatabase::database(cascoDb.connectionName()));
+    model->setTable("dops");
+    model->select();
+    QSqlTableModel* bindTable = new QSqlTableModel(this, QSqlDatabase::database(cascoDb.connectionName()));
+    bindTable->setTable("autos_dops");
+    bindTable->select();
+    foreach (const QStringList& lst, datas) {
+        for(int row=0; row<model->rowCount();++row)
+        {
+            QString dop(model->record(row).value(0).toString());
+            if(checkDopsString(lst[4]+lst[5], dop))
+            {
+                QSqlRecord rec;
+                rec.append(QSqlField("auto",QVariant::Int));
+                rec.append(QSqlField("dops",QVariant::String));
+                rec.setValue("auto", lst[0]);
+                rec.setValue("dops", dop);
+                if(bindTable->insertRecord(-1, rec))
+                {
+                    if(!bindTable->submit())
+                    {
+                        qDebug()<<bindTable->lastError().text();
+                    }
+                }
+                else
+                {
+                    qDebug()<<bindTable->lastError().text();
+                }
+                bindTable->select();
+            }
+
+        }
+    }
+}
+
+void dataBase::fillCascoMarks(const QList<QStringList> &data)
+{
+    QSqlTableModel* model = new QSqlTableModel(this, QSqlDatabase::database(cascoDb.connectionName()));
+    model->setTable("auto_marks");
+    model->select();
+
+    foreach (const QStringList& lst, data) {
+        QSqlRecord rec;
+        rec.append(QSqlField("name",QVariant::String));
+        rec.setValue("name", lst[1]);
+        if(model->insertRecord(-1, rec))
+        {
+            if(!model->submit())
+            {
+                qDebug()<<model->lastError().text();
+            }
+        }
+        model->select();
+    }
+}
+void dataBase::fillCascoModels(const QList<QStringList> &data)
+{
+    QSqlTableModel* model = new QSqlTableModel(this, QSqlDatabase::database(cascoDb.connectionName()));
+    model->setTable("auto_models");
+    model->select();
+    foreach (const QStringList& lst, data) {
+        QSqlRecord rec;
+        rec.append(QSqlField("id",QVariant::Int));
+        rec.append(QSqlField("name",QVariant::String));
+        rec.append(QSqlField("mark",QVariant::String));
+        rec.append(QSqlField("coeff",QVariant::Double));
+        rec.setValue("id",lst[0]);
+        rec.setValue("mark",lst[1]);
+        rec.setValue("name",lst[2]);
+        rec.setValue("coeff",lst[3]);
+        if(model->insertRecord(-1, rec))
+        {
+            if(!model->submit())
+            {
+                qDebug()<<model->lastError().text();
+            }
+        }
+        else
+        {
+            qDebug()<<model->lastError().text();
+        }
+        model->select();
+    }
+}
+void dataBase::fillCascoDops(const QList<QStringList> &data)
+{
+    QSqlTableModel* model = new QSqlTableModel(this, QSqlDatabase::database(cascoDb.connectionName()));
+    model->setTable("dops");
+    model->select();
+    auto insertField = [&model](const QString& str){
+        if(str.count() < 0) return;
+        QSqlRecord rec;
+        rec.append(QSqlField("name",QVariant::String));
+        rec.setValue("name",str);
+        if(model->insertRecord(-1, rec))
+        {
+            if(!model->submit())
+            {
+                qDebug()<<model->lastError().text();
+            }
+        }
+        model->select();
+    };
+    foreach (const QStringList& lst, data) {
+        insertField(lst[4]);
+        insertField(lst[5]);
+    }
 }
 void dataBase::initAgentsDb()
 {
@@ -160,22 +351,40 @@ dataBase::dataBase(QObject *parent) :
     dbase.setDatabaseName("calc.db");
     agentsDb = QSqlDatabase::addDatabase("QSQLITE", "agents.db");
     agentsDb.setDatabaseName("agents.db");
+    cascoDb = QSqlDatabase::addDatabase("QSQLITE", "casco.db");
+    cascoDb.setDatabaseName("casco.db");
 }
 dataBase::~dataBase()
 {
-    dbase.commit();
-    dbase.close();
+    if(dbase.isValid())
+    {
+        dbase.commit();
+        dbase.close();
+    }
+    if(agentsDb.isValid())
+    {
+        agentsDb.commit();
+        agentsDb.close();
+    }
+    if(cascoDb.isValid())
+    {
+        cascoDb.commit();
+        cascoDb.close();
+    }
+    QSqlDatabase::removeDatabase("agents.db");
+    QSqlDatabase::removeDatabase("calc.db");
+    QSqlDatabase::removeDatabase("casco.db");
 }
 
 void dataBase::connectDB()
 {
     if (!dbase.open()) {
         qDebug() << "Что-то не так с соединением!";
-        throw std::runtime_error("Cant connect to db");
+        //throw std::runtime_error("Cant connect to db");
     }
     if (!agentsDb.open()) {
         qDebug() << "Что-то не так с соединением!";
-        throw std::runtime_error("Cant connect to agentsdb");
+        //throw std::runtime_error("Cant connect to agentsdb");
     }
 }
 dataBase::dataBase(const QString &name, QObject *parent)

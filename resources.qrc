@@ -3,5 +3,7 @@
         <file>Osago.db.json</file>
         <file>templates/osago_zayavlenie.html</file>
         <file>templates/logo.jpg</file>
+        <file>agents.db</file>
+        <file>calc.db</file>
     </qresource>
 </RCC>

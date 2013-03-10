@@ -19,7 +19,7 @@ int main(int argc, char *argv[])
         QTextCodec::setCodecForLocale(QTextCodec::codecForName("UTF-8"));
 
         MainWindow w;
-;
+        qDebug()<<a.applicationFilePath();
 
         w.show();
         return a.exec();

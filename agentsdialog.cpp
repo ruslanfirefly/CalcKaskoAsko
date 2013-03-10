@@ -3,6 +3,7 @@
 #include "dateDelegate.h"
 #include <QTimer>
 #include <QCloseEvent>
+
 agentsDialog::agentsDialog(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::agentsDialog)
@@ -20,6 +21,7 @@ void agentsDialog::closeEvent(QCloseEvent *e)
     {
         e->accept();
     }
+
 }
 
 agentsDialog::agentsDialog(dataBase* base, QWidget *parent) :  agentsDialog(parent)

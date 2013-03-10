@@ -22,6 +22,8 @@ private slots:
     void openDbEditor();
     void on_pushButton_clicked();
 
+    void on_cascoPushButton_clicked();
+
 private:
     Ui::MainWindow *ui;
     dataBase* db;
