@@ -28,6 +28,8 @@ private:
      QSortFilterProxyModel* sortModel;
 private slots:
     void calculate();
+signals:
+    void next(int);
 
 };
 

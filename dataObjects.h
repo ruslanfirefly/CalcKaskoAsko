@@ -67,9 +67,9 @@ struct OsagoCoeffs
 struct OsagoData
 {
     enum DriversCount { UnlimitedDrivers, LimitDrivers };
-    Driver insurancer, owner;
+    Driver insurancer, owner, profiter;
     ts transport;
-    bool insurancerIsOwner;
+    bool insurancerIsOwner = false, insurancerIsProfiter = false;
     DriversCount dCount = LimitDrivers;
     QList<DriverInfo> drivers = QList<DriverInfo>();
     QList<QPair<QDate, QDate> > usingPeriods;

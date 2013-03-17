@@ -38,7 +38,10 @@ SOURCES += main.cpp\
     osagousinginfoform.cpp \
     printwebview.cpp \
     calccascoform.cpp \
-    cascomaster.cpp
+    cascomaster.cpp \
+    cascodatadialog.cpp \
+    cascotsinfodialog.cpp \
+    cascousinginfodialog.cpp
 
 HEADERS  += mainwindow.h \
     agentsdialog.h \
@@ -57,7 +60,10 @@ HEADERS  += mainwindow.h \
     dataObjects.h \
     printwebview.h \
     calccascoform.h \
-    cascomaster.h
+    cascomaster.h \
+    cascodatadialog.h \
+    cascotsinfodialog.h \
+    cascousinginfodialog.h
 
 FORMS    += mainwindow.ui \
     agentsdialog.ui \
@@ -67,7 +73,10 @@ FORMS    += mainwindow.ui \
     osagotsblank.ui \
     osagousinginfoform.ui \
     printwebview.ui \
-    calccascoform.ui
+    calccascoform.ui \
+    cascodatadialog.ui \
+    cascotsinfodialog.ui \
+    cascousinginfodialog.ui
 
 RESOURCES += \
     resources.qrc

@@ -16,6 +16,7 @@ calcCascoForm::calcCascoForm(QWidget *parent) :
     createModelField();
     activateComboBoxes();
     connect(ui->premSpinBox, SIGNAL(valueChanged(int)), this, SLOT(calculate()));
+    connect(ui->nextButton, &QPushButton::clicked, [this](){ emit this->next(1);} );
 }
 void calcCascoForm::createModelField()
 {
