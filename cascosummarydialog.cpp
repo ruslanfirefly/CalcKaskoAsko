@@ -9,6 +9,9 @@ CascoSummaryDialog::CascoSummaryDialog(QWidget *parent) :
     connect(ui->prevButton, &QPushButton::clicked, [this](){
         emit this->prev(1);
     });
+    connect(ui->printButton, &QPushButton::clicked,[this](){
+        emit this->printBlank();
+    });
     QButtonGroup* b = new QButtonGroup(this);
     b->addButton(ui->onePayment);
     b->addButton(ui->morePayments);

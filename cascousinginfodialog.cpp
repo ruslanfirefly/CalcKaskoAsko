@@ -16,8 +16,8 @@ CascoUsingInfoDialog::CascoUsingInfoDialog(OsagoData* d, QWidget *parent) :
     connect(ui->showDriverButton, SIGNAL(clicked()), this, SLOT(showDriver()));
     connect(ui->constDriversButton, SIGNAL(toggled(bool)), this, SLOT(setUnlimDriversEnabled(bool)));
     connect(ui->prevButton, SIGNAL(clicked()), this, SLOT(fillData()));
-    connect(ui->prevButton, &QPushButton::clicked, [this](){ emit this->prev(1);} );
-    connect(ui->nextButton, &QPushButton::clicked, [this](){ emit this->next(1);} );
+    connect(ui->prevButton, &QPushButton::clicked, [this](){ fillData(); emit this->prev(1);} );
+    connect(ui->nextButton, &QPushButton::clicked, [this](){ fillData(); emit this->next(1); } );
     ui->constDriversButton->setChecked(true);
     this->resize(minimumSize());
     fillComboBoxes();

@@ -6,6 +6,7 @@
 #include <QList>
 #include <dataObjects.h>
 #include <QMutex>
+#include <QtWebKitWidgets>
 class CascoMaster : public QObject
 {
     Q_OBJECT
@@ -15,6 +16,8 @@ class CascoMaster : public QObject
     OsagoData data;
     QMutex m;
     void fillForms(std::initializer_list<QDialog *> f);
+    void fillBlank(QWebView*);
+    void openPrintDialog(QWebView*);
 public:
     explicit CascoMaster(QObject *parent = 0);
     
@@ -27,6 +30,7 @@ public slots:
     void prev(int);
     void hideCurrentForm();
     void showCurrentForm();
+    void printBlank();
 };
 
 #endif // CASCOMASTER_H

@@ -18,6 +18,7 @@ public:
     
 signals:
     void prev(int);
+    void printBlank();
 private:
     Ui::CascoSummaryDialog *ui;
     OsagoData* data;

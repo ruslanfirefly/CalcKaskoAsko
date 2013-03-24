@@ -35,10 +35,17 @@ void printWebView::print()
         case IMAGE:
             printImage(printer);
             break;
+        case PLAIN:
+            printPlain(printer);
+            break;
         }
 
     }
    // this->deleteLater();
+}
+void printWebView::printPlain(QPrinter *printer)
+{
+    ui->webView->print(printer);
 }
 void printWebView::printHtml(QPrinter *printer)
 {

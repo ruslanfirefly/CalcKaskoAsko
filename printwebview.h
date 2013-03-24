@@ -13,7 +13,7 @@ class printWebView : public QDialog
     Q_OBJECT
     
 public:
-    enum printType{ HTML, IMAGE };
+    enum printType{ HTML, IMAGE, PLAIN };
     explicit printWebView(QWidget *parent = 0);
     ~printWebView();
     void setViewPage(QWebPage* page, printType type = IMAGE);
@@ -25,6 +25,7 @@ private slots:
     void print();
     void printHtml(QPrinter* printer);
     void printImage(QPrinter *printer);
+    void printPlain(QPrinter *printer);
 };
 
 #endif // PRINTWEBVIEW_H
