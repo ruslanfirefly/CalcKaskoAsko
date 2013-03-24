@@ -4,6 +4,7 @@
 #include "cascotsinfodialog.h"
 #include "cascousinginfodialog.h"
 #include <QMutex>
+#include "cascosummarydialog.h"
 CascoMaster::CascoMaster(QObject *parent) :
     QObject(parent)
 {
@@ -13,6 +14,7 @@ CascoMaster::CascoMaster(QObject *parent) :
                  , new CascoDataDialog(CascoDataDialog::Profiter, &data)
                  , new CascoTsInfoDialog(&data)
                  , new CascoUsingInfoDialog(&data)
+                 , new CascoSummaryDialog(&data)
                } ) ;
     showCurrentForm();
 }

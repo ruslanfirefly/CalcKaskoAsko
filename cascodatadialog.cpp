@@ -39,7 +39,7 @@ CascoDataDialog::CascoDataDialog(CascoDialogType t, OsagoData *d, QWidget *paren
     case Profiter:
         setWindowTitle(tr("Данные выгодоприобретателя"));
         ui->dTypeGroupBox->setTitle(tr("Выгодоприобретатель"));
-        driver = (&data->profiter);
+        driver = &(data->profiter);
         break;
     default:
         break;

@@ -41,7 +41,8 @@ SOURCES += main.cpp\
     cascomaster.cpp \
     cascodatadialog.cpp \
     cascotsinfodialog.cpp \
-    cascousinginfodialog.cpp
+    cascousinginfodialog.cpp \
+    cascosummarydialog.cpp
 
 HEADERS  += mainwindow.h \
     agentsdialog.h \
@@ -63,7 +64,8 @@ HEADERS  += mainwindow.h \
     cascomaster.h \
     cascodatadialog.h \
     cascotsinfodialog.h \
-    cascousinginfodialog.h
+    cascousinginfodialog.h \
+    cascosummarydialog.h
 
 FORMS    += mainwindow.ui \
     agentsdialog.ui \
@@ -76,7 +78,8 @@ FORMS    += mainwindow.ui \
     calccascoform.ui \
     cascodatadialog.ui \
     cascotsinfodialog.ui \
-    cascousinginfodialog.ui
+    cascousinginfodialog.ui \
+    cascosummarydialog.ui
 
 RESOURCES += \
     resources.qrc

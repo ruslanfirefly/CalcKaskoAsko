@@ -25,7 +25,6 @@ private slots:
     void on_addTimeButton_clicked();
     void on_delTimeButton_clicked();
     void setUnlimDriversEnabled(bool);
-    void lastOsagoContractEnable(bool);
     void on_printRequest_clicked();
     void fillFields();
     void fillData();
@@ -35,7 +34,8 @@ private slots:
 signals:
     void prev();
     void printRequest();
-
+    void next(int);
+    void prev(int);
     void printBlank();
 private:
     Ui::CascoUsingInfoDialog *ui;

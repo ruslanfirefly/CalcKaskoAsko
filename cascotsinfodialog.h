@@ -20,6 +20,7 @@ signals:
     void next(int);
 private:
     Ui::CascoTsInfoDialog *ui;
+    OsagoData* data;
 };
 
 #endif // CASCOTSINFODIALOG_H

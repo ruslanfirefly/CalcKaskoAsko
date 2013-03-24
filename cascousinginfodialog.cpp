@@ -3,6 +3,7 @@
 #include "printer.h"
 #include <QSqlTableModel>
 #include "database.h"
+
 CascoUsingInfoDialog::CascoUsingInfoDialog(OsagoData* d, QWidget *parent) :
     QDialog(parent),
      ui(new Ui::CascoUsingInfoDialog)
@@ -15,12 +16,21 @@ CascoUsingInfoDialog::CascoUsingInfoDialog(OsagoData* d, QWidget *parent) :
     connect(ui->showDriverButton, SIGNAL(clicked()), this, SLOT(showDriver()));
     connect(ui->constDriversButton, SIGNAL(toggled(bool)), this, SLOT(setUnlimDriversEnabled(bool)));
     connect(ui->prevButton, SIGNAL(clicked()), this, SLOT(fillData()));
+    connect(ui->prevButton, &QPushButton::clicked, [this](){ emit this->prev(1);} );
+    connect(ui->nextButton, &QPushButton::clicked, [this](){ emit this->next(1);} );
     ui->constDriversButton->setChecked(true);
-    lastOsagoContractEnable(false);
     this->resize(minimumSize());
     fillComboBoxes();
     fillFields();
     on_compareWithUsing_stateChanged(ui->compareWithUsing->checkState());
+    while(currentDrivers != 1)
+    {
+        hideDriver();
+    }
+    while(currentDateIntervals != 1)
+    {
+        on_delTimeButton_clicked();
+    }
 }
 CascoUsingInfoDialog::~CascoUsingInfoDialog()
 {
@@ -84,16 +94,6 @@ void CascoUsingInfoDialog::setUnlimDriversEnabled(bool enabled)
         setTablwRowItemEnable(enabled, row, ui->driversGridLayout);
     }
 }
-void CascoUsingInfoDialog::lastOsagoContractEnable(bool enable)
-{
-    for(int row = 1; row < ui->lastOsagoGridLayout->rowCount(); ++row)
-    {
-        for(int column = 0; column < ui->lastOsagoGridLayout->columnCount(); ++column)
-        {
-            ui->lastOsagoGridLayout->itemAtPosition(row, column)->widget()->setEnabled(enable);
-        }
-    }
-}
 void CascoUsingInfoDialog::fillFields()
 {
     switch(data->dCount)
@@ -115,18 +115,6 @@ void CascoUsingInfoDialog::fillFields()
         qobject_cast<QComboBox*>(ui->driversGridLayout->itemAtPosition(i+1, 5)->widget())->setCurrentIndex(data->drivers[i].dClass);
         qobject_cast<QSpinBox*>(ui->driversGridLayout->itemAtPosition(i+1, 6)->widget())->setValue(data->drivers[i].countOfIncidents);
     }
-    ui->fromInsDate->setDate(data->from);
-    ui->toInsDate->setDate(data->to);
-
-    for(int i = 0; i< data->usingPeriods.count(); ++i)
-    {
-        qobject_cast<QDateEdit*>(ui->timeGridLayout->itemAtPosition(i+1, 1)->widget())->setDate(data->usingPeriods[i].first);
-        qobject_cast<QDateEdit*>(ui->timeGridLayout->itemAtPosition(i+1, 4)->widget())->setDate(data->usingPeriods[i].second);
-    }
-    ui->lastOsagoContractCheckBox->setChecked(data->hasLastOsago);
-    ui->lastOsagoCompany->setText(data->lastOsagoCompany);
-    ui->lastOsagoNum->setText(data->lastOsagoNum);
-    ui->lastOsagoSerial->setText(data->lastOsagoSerial);
     ui->otherInfoLineEdit->setText(data->otherInfo);
     ui->notesLineEdit->setText(data->notes);
     ui->polisNumLineEdit->setText(data->polisNum);
@@ -157,32 +145,12 @@ void CascoUsingInfoDialog::fillData()
         data->drivers[i-1].dClass = qobject_cast<QComboBox*>(ui->driversGridLayout->itemAtPosition(i, 5)->widget())->currentIndex();
         data->drivers[i-1].countOfIncidents = qobject_cast<QSpinBox*>(ui->driversGridLayout->itemAtPosition(i, 6)->widget())->value();
     }
-    for(int i = 1; i<=currentDateIntervals; ++i)
-    {
-        data->usingPeriods.push_back(QPair<QDate, QDate>());
-        data->usingPeriods[i-1].first = qobject_cast<QDateEdit*>(ui->timeGridLayout->itemAtPosition(i, 1)->widget())->date();
 
-        data->usingPeriods[i-1].second = qobject_cast<QDateEdit*>(ui->timeGridLayout->itemAtPosition(i, 4)->widget())->date();
-    }
-    if(ui->compareWithUsing->isChecked())
-    {
-        //qobject_cast<QDateEdit*>(ui->timeGridLayout->itemAtPosition(1, 1)->widget())->setDate(ui->fromInsDate->date());
-        //qobject_cast<QDateEdit*>(ui->timeGridLayout->itemAtPosition(1, 4)->widget())->setDate(ui->toInsDate->date());
-        data->usingPeriods.clear();
-        data->usingPeriods.push_back(QPair<QDate, QDate>());
-        data->usingPeriods.first().first = ui->fromInsDate->date();
-        data->usingPeriods.first().second = ui->toInsDate->date();
-    }
-    data->hasLastOsago = ui->lastOsagoContractCheckBox->isChecked();
-    data->lastOsagoCompany = ui->lastOsagoCompany->text();
-    data->lastOsagoNum = ui->lastOsagoNum->text();
-    data->lastOsagoSerial = ui->lastOsagoSerial->text();
     data->otherInfo = ui->otherInfoLineEdit->text();
     data->notes = ui->notesLineEdit->text();
     data->polisNum = ui->polisNumLineEdit->text();
     data->polisSerial = ui->polisSerialLineEdit->text();
-    data->from = ui->fromInsDate->date();
-    data->to = ui->toInsDate->date();
+
     data->agent = ui->agentsComboBox->model()->data(
                 ui->agentsComboBox->model()->index(ui->comboBox->view()->currentIndex().row(), 1)
                 ).toString();
@@ -209,12 +177,25 @@ void CascoUsingInfoDialog::on_printRequest_clicked()
 
 void CascoUsingInfoDialog::on_compareWithUsing_stateChanged(int state)
 {
-    if(state == Qt::Checked)
+
+    if(QWidget* s = qobject_cast<QWidget*>(sender()))
     {
-        ui->usingPeriodsGroupBox->setEnabled(false);
-    }
-    else
+        s->setEnabled(true);
+    }    
+    for(int row = 0; row < ui->timeGridLayout->rowCount(); ++row )
     {
-        ui->usingPeriodsGroupBox->setEnabled(true);
+        if(state == Qt::Checked)
+        {
+            setTablwRowItemEnable(true, row, ui->timeGridLayout);
+            ui->addTimeButton->setEnabled(true);
+            ui->delTimeButton->setEnabled(true);
+        }
+        else
+        {
+            setTablwRowItemEnable(false, row, ui->timeGridLayout);
+            ui->addTimeButton->setEnabled(false);
+            ui->delTimeButton->setEnabled(false);
+        }
     }
+
 }
