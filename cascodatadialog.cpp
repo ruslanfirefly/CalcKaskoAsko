@@ -100,9 +100,13 @@ void CascoDataDialog::fillData()
     driver->phone = ui->phone->text();
     driver->birthday = ui->birthday->date();
     driver->fizik = !ui->urCheckBox->isChecked();
+    driver->documentDate = ui->documentDate->date();
+    driver->documentCustomer = ui->documentCustomer->text();
 }
 void CascoDataDialog::fillFields()
 {
+    ui->documentDate->setDate(driver->documentDate);
+    ui->documentCustomer->setText(driver->documentCustomer);
     ui->insurancerIsOwner->setChecked(data->insurancerIsOwner);
     ui->profiter->setChecked(data->insurancerIsProfiter);
     ui->fioLineEdit->setText(driver->fio);

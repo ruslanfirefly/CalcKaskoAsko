@@ -31,4 +31,24 @@ CascoTsInfoDialog::CascoTsInfoDialog(OsagoData *d, QWidget *parent) : CascoTsInf
             emit prev(1);
         }
     });
+    connect(this, SIGNAL(next(int)), this, SLOT(fillData()));
+    connect(this, SIGNAL(prev(int)), this, SLOT(fillData()));
+}
+void CascoTsInfoDialog::fillFields()
+{
+
+
+}
+void CascoTsInfoDialog::fillData()
+{
+    data->transport.gosNumber = ui->gosNumber->text();
+    data->transport.color = ui->color->text();
+    data->transport.vin = ui->vinLineEdit->text();
+    data->transport.year = ui->yearSpinBox->value();
+    data->transport.track = ui->trackLineEdit->text();
+    data->transport.engineNum = ui->engineNum->text();
+    data->transport.mileage = ui->mileage->value();
+    data->transport.ptsData = ui->ptsData->text();
+    data->transport.stsData = ui->stsData->text();
+    data->transport.uType = static_cast<ts::UsingType>(ui->usingType->currentIndex());
 }

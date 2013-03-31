@@ -16,8 +16,13 @@ calcCascoForm::calcCascoForm(QWidget *parent) :
     createModelField();
     activateComboBoxes();
     connect(ui->premSpinBox, SIGNAL(valueChanged(int)), this, SLOT(calculate()));
-    connect(ui->nextButton, &QPushButton::clicked, [this](){ emit this->next(1);} );
+    connect(ui->nextButton, &QPushButton::clicked, [this](){ if(data->cascoData.prem != 0) emit this->next(1);} );
 }
+calcCascoForm::calcCascoForm(OsagoData *d, QWidget *parent) : calcCascoForm(parent)
+{
+    data = d;
+}
+
 void calcCascoForm::createModelField()
 {
     QSqlQueryModel* model = new QSqlQueryModel(this);
@@ -107,7 +112,11 @@ void calcCascoForm::calculate()
                        .arg(transCoeff)
                        .arg(tarif)
                        );
-    ui->prem->setText(QString::number(tarif*ui->premSpinBox->value()/100, 'f', 3) + tr(" тыс. руб"));
+    data->cascoData.prem = tarif*ui->premSpinBox->value()/100;
+    data->cascoData.tarif = tarif;
+    ui->prem->setText(QString::number(data->cascoData.prem, 'f', 3) + tr(" тыс. руб"));
+    data->transport.model = ui->modelLineEdit->text();
+    data->cascoData.sum = ui->premSpinBox->value();
 }
 qreal calcCascoForm::getCoefFromIndex(QModelIndex index)
 {

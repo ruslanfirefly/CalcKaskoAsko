@@ -18,6 +18,9 @@ public:
 signals:
     void prev(int);
     void next(int);
+private slots:
+    void fillFields();
+    void fillData();
 private:
     Ui::CascoTsInfoDialog *ui;
     OsagoData* data;

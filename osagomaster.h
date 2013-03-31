@@ -45,6 +45,7 @@ private:
     void fillDriverData(const QString& prefix, Driver* driver, QWebFrame* frame);
     void fillDriverInfoTable(QList<DriverInfo> info, QWebFrame* frame);
     void printWebViewDialog(QWebView* v, printWebView::printType);
+
 };
 
 #endif // OSAGOMASTER_H

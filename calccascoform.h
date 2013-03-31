@@ -5,6 +5,7 @@
 #include <QComboBox>
 #include <QModelIndex>
 #include <QSortFilterProxyModel>
+#include <dataObjects.h>
 namespace Ui {
 class calcCascoForm;
 }
@@ -15,10 +16,12 @@ class calcCascoForm : public QDialog
     
 public:
     explicit calcCascoForm(QWidget *parent = 0);
+    calcCascoForm(OsagoData* data, QWidget *parent = 0);
     ~calcCascoForm();
 private slots:
     void changeCarModel(QModelIndex);
 private:
+    OsagoData* data;
     Ui::calcCascoForm *ui;
     void createModelField();
     void activateComboBoxes();

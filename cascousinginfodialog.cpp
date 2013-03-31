@@ -31,6 +31,8 @@ CascoUsingInfoDialog::CascoUsingInfoDialog(OsagoData* d, QWidget *parent) :
     {
         on_delTimeButton_clicked();
     }
+    ui->startDate->setDateTime(QDateTime::currentDateTime());
+
 }
 CascoUsingInfoDialog::~CascoUsingInfoDialog()
 {
@@ -108,14 +110,11 @@ void CascoUsingInfoDialog::fillFields()
     for(int i = 0; i < data->drivers.count(); ++i)
     {
         qobject_cast<QLineEdit*>(ui->driversGridLayout->itemAtPosition(i+1, 0)->widget())->setText(data->drivers[i].fio);
-        qobject_cast<QDateEdit*>(ui->driversGridLayout->itemAtPosition(i+1, 1)->widget())->setDate(data->drivers[i].birthday);
-        qobject_cast<QComboBox*>(ui->driversGridLayout->itemAtPosition(i+1, 2)->widget())->setCurrentIndex(data->drivers[i].sex);
+        qobject_cast<QDateEdit*>(ui->driversGridLayout->itemAtPosition(i+1, 1)->widget())->setDate(data->drivers[i].birthday);        \
         qobject_cast<QLineEdit*>(ui->driversGridLayout->itemAtPosition(i+1, 3)->widget())->setText(data->drivers[i].driverLicence);
-        qobject_cast<QLineEdit*>(ui->driversGridLayout->itemAtPosition(i+1, 4)->widget())->setText(data->drivers[i].stage);
-        qobject_cast<QComboBox*>(ui->driversGridLayout->itemAtPosition(i+1, 5)->widget())->setCurrentIndex(data->drivers[i].dClass);
-        qobject_cast<QSpinBox*>(ui->driversGridLayout->itemAtPosition(i+1, 6)->widget())->setValue(data->drivers[i].countOfIncidents);
+        qobject_cast<QLineEdit*>(ui->driversGridLayout->itemAtPosition(i+1, 4)->widget())->setText(data->drivers[i].stage);        
     }
-    ui->otherInfoLineEdit->setText(data->otherInfo);
+    //ui->otherInfoLineEdit->setText(data->otherInfo);
     ui->notesLineEdit->setText(data->notes);
     ui->polisNumLineEdit->setText(data->polisNum);
     ui->polisSerialLineEdit->setText(data->polisSerial);
@@ -123,7 +122,9 @@ void CascoUsingInfoDialog::fillFields()
     agentsModel->setQuery(
                 "SELECT  second_name || \" \" || first_name || \" \" || third_name  ||"
                 "\"  (договор №\" || number || \" от \" ||date || \")\","
-                " second_name || \" \" || first_name || \" \" || third_name from agents",
+                " second_name || \" \" || first_name || \" \" || third_name, number, date,"
+                "second_name || \" \" || first_name || \" \" || third_name as fio "
+                "from agents",
                 QSqlDatabase::database(dataBase::agentsDb.connectionName())
                 );
     ui->agentsComboBox->setModel(agentsModel);
@@ -138,27 +139,40 @@ void CascoUsingInfoDialog::fillData()
     {
         data->drivers.push_back(DriverInfo());
         data->drivers[i-1].fio = qobject_cast<QLineEdit*>(ui->driversGridLayout->itemAtPosition(i, 0)->widget())->text();
-        data->drivers[i-1].birthday = qobject_cast<QDateEdit*>(ui->driversGridLayout->itemAtPosition(i, 1)->widget())->date();
-        data->drivers[i-1].sex = static_cast<DriverInfo::Sexes>(qobject_cast<QComboBox*>(ui->driversGridLayout->itemAtPosition(i, 2)->widget())->currentIndex());
-        data->drivers[i-1].driverLicence = qobject_cast<QLineEdit*>(ui->driversGridLayout->itemAtPosition(i, 3)->widget())->text();
-        data->drivers[i-1].stage = qobject_cast<QLineEdit*>(ui->driversGridLayout->itemAtPosition(i, 4)->widget())->text();
-        data->drivers[i-1].dClass = qobject_cast<QComboBox*>(ui->driversGridLayout->itemAtPosition(i, 5)->widget())->currentIndex();
-        data->drivers[i-1].countOfIncidents = qobject_cast<QSpinBox*>(ui->driversGridLayout->itemAtPosition(i, 6)->widget())->value();
+        data->drivers[i-1].birthday = qobject_cast<QDateEdit*>(ui->driversGridLayout->itemAtPosition(i, 1)->widget())->date();        
+        data->drivers[i-1].driverLicence = qobject_cast<QLineEdit*>(ui->driversGridLayout->itemAtPosition(i, 2)->widget())->text();
+        data->drivers[i-1].stage = qobject_cast<QLineEdit*>(ui->driversGridLayout->itemAtPosition(i, 3)->widget())->text();
     }
 
-    data->otherInfo = ui->otherInfoLineEdit->text();
+    //data->otherInfo = ui->otherInfoLineEdit->text();
     data->notes = ui->notesLineEdit->text();
     data->polisNum = ui->polisNumLineEdit->text();
     data->polisSerial = ui->polisSerialLineEdit->text();
-
+    data->hasDop = ui->compareWithUsing->isChecked();
+    for(int i = 1; i<=currentDateIntervals; ++i)
+    {
+        data->dops.push_back(AdditionalEquipment());
+        data->dops[i-1].name = qobject_cast<QLineEdit*>(ui->timeGridLayout->itemAtPosition(i, 0)->widget())->text();
+        data->dops[i-1].model = qobject_cast<QLineEdit*>(ui->timeGridLayout->itemAtPosition(i, 1)->widget())->text();
+        data->dops[i-1].count = qobject_cast<QSpinBox*>(ui->timeGridLayout->itemAtPosition(i, 2)->widget())->value();
+        data->dops[i-1].cost = qobject_cast<QSpinBox*>(ui->timeGridLayout->itemAtPosition(i, 3)->widget())->value();
+        data->dops[i-1].prem = qobject_cast<QSpinBox*>(ui->timeGridLayout->itemAtPosition(i, 4)->widget())->value();
+    }
     data->agent = ui->agentsComboBox->model()->data(
-                ui->agentsComboBox->model()->index(ui->comboBox->view()->currentIndex().row(), 1)
+                ui->agentsComboBox->model()->index(ui->agentsComboBox->view()->currentIndex().row(), 4)
+                ).toString();
+    data->startDate = ui->startDate->dateTime();
+    data->agentDate = ui->agentsComboBox->model()->data(
+                ui->agentsComboBox->model()->index(ui->agentsComboBox->view()->currentIndex().row(), 3)
+                ).toString();
+    data->agentNumber = ui->agentsComboBox->model()->data(
+                ui->agentsComboBox->model()->index(ui->agentsComboBox->view()->currentIndex().row(), 2)
                 ).toString();
 }
 
 void CascoUsingInfoDialog::fillComboBoxes()
 {
-    for(int row = 1; row < ui->driversGridLayout->rowCount(); ++row)
+   /* for(int row = 1; row < ui->driversGridLayout->rowCount(); ++row)
     {
         QSqlTableModel* model = new QSqlTableModel(this, QSqlDatabase::database("calc.db"));
         model->setTable("classes");
@@ -167,7 +181,7 @@ void CascoUsingInfoDialog::fillComboBoxes()
         classesComboBox->setModel(model);
         classesComboBox->setModelColumn(1);
         classesComboBox->view()->setCurrentIndex(model->index(0, 1));
-    }
+    }*/
 }
 
 void CascoUsingInfoDialog::on_printRequest_clicked()

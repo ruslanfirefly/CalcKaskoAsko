@@ -6,16 +6,16 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1003</width>
-    <height>782</height>
+    <width>694</width>
+    <height>781</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout_4">
+  <layout class="QVBoxLayout" name="verticalLayout_6">
    <item>
-    <layout class="QVBoxLayout" name="verticalLayout">
+    <layout class="QVBoxLayout" name="verticalLayout_5">
      <item>
       <widget class="QGroupBox" name="groupBox_2">
        <property name="title">
@@ -110,23 +110,16 @@
            </spacer>
           </item>
           <item row="1" column="0" colspan="2">
-           <layout class="QGridLayout" name="driversGridLayout" rowstretch="0,1,0,0,0">
-            <item row="2" column="2">
-             <widget class="QComboBox" name="comboBox_6">
-              <item>
-               <property name="text">
-                <string>М</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>Ж</string>
-               </property>
-              </item>
-             </widget>
+           <layout class="QGridLayout" name="driversGridLayout" rowstretch="0,0,0,0,0">
+            <item row="2" column="0">
+             <widget class="QLineEdit" name="lineEdit_10"/>
             </item>
-            <item row="3" column="3">
-             <widget class="QLineEdit" name="lineEdit_13"/>
+            <item row="0" column="3">
+             <widget class="QLabel" name="label_7">
+              <property name="text">
+               <string>Стаж</string>
+              </property>
+             </widget>
             </item>
             <item row="1" column="1">
              <widget class="QDateEdit" name="dateEdit_2">
@@ -135,31 +128,7 @@
               </property>
              </widget>
             </item>
-            <item row="3" column="2">
-             <widget class="QComboBox" name="comboBox_7">
-              <item>
-               <property name="text">
-                <string>М</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>Ж</string>
-               </property>
-              </item>
-             </widget>
-            </item>
-            <item row="2" column="0">
-             <widget class="QLineEdit" name="lineEdit_10"/>
-            </item>
-            <item row="0" column="4">
-             <widget class="QLabel" name="label_7">
-              <property name="text">
-               <string>Стаж</string>
-              </property>
-             </widget>
-            </item>
-            <item row="4" column="3">
+            <item row="4" column="2">
              <widget class="QLineEdit" name="lineEdit_15"/>
             </item>
             <item row="1" column="0">
@@ -172,19 +141,11 @@
               </property>
              </widget>
             </item>
-            <item row="4" column="2">
-             <widget class="QComboBox" name="comboBox_8">
-              <item>
-               <property name="text">
-                <string>М</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>Ж</string>
-               </property>
-              </item>
-             </widget>
+            <item row="1" column="2">
+             <widget class="QLineEdit" name="lineEdit_9"/>
+            </item>
+            <item row="3" column="0">
+             <widget class="QLineEdit" name="lineEdit_12"/>
             </item>
             <item row="0" column="0">
              <widget class="QLabel" name="label_11">
@@ -193,28 +154,51 @@
               </property>
              </widget>
             </item>
-            <item row="4" column="5">
-             <widget class="QComboBox" name="comboBox_5"/>
+            <item row="4" column="0">
+             <widget class="QLineEdit" name="lineEdit_14"/>
             </item>
-            <item row="0" column="5">
-             <widget class="QLabel" name="label_6">
-              <property name="text">
-               <string>Класс</string>
+            <item row="4" column="1">
+             <widget class="QDateEdit" name="dateEdit_8">
+              <property name="calendarPopup">
+               <bool>true</bool>
               </property>
              </widget>
             </item>
-            <item row="1" column="2">
-             <widget class="QComboBox" name="comboBox_4">
-              <item>
-               <property name="text">
-                <string>М</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>Ж</string>
-               </property>
-              </item>
+            <item row="3" column="1">
+             <widget class="QDateEdit" name="dateEdit_6">
+              <property name="calendarPopup">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="2">
+             <widget class="QLineEdit" name="lineEdit_11"/>
+            </item>
+            <item row="1" column="3">
+             <widget class="QLineEdit" name="lineEdit"/>
+            </item>
+            <item row="0" column="2">
+             <widget class="QLabel" name="label_10">
+              <property name="text">
+               <string>Водительское удостоверение
+ (серия, номер)</string>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="3">
+             <widget class="QLineEdit" name="lineEdit_2"/>
+            </item>
+            <item row="4" column="3">
+             <widget class="QLineEdit" name="lineEdit_16"/>
+            </item>
+            <item row="3" column="3">
+             <widget class="QLineEdit" name="lineEdit_3"/>
+            </item>
+            <item row="2" column="1">
+             <widget class="QDateEdit" name="dateEdit_4">
+              <property name="calendarPopup">
+               <bool>true</bool>
+              </property>
              </widget>
             </item>
             <item row="0" column="1">
@@ -224,105 +208,8 @@
               </property>
              </widget>
             </item>
-            <item row="2" column="5">
-             <widget class="QComboBox" name="comboBox_2"/>
-            </item>
-            <item row="2" column="1">
-             <widget class="QDateEdit" name="dateEdit_4">
-              <property name="calendarPopup">
-               <bool>true</bool>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="5">
-             <widget class="QComboBox" name="comboBox"/>
-            </item>
-            <item row="1" column="3">
-             <widget class="QLineEdit" name="lineEdit_9"/>
-            </item>
-            <item row="3" column="0">
-             <widget class="QLineEdit" name="lineEdit_12"/>
-            </item>
-            <item row="0" column="2">
-             <widget class="QLabel" name="label_8">
-              <property name="text">
-               <string>Пол</string>
-              </property>
-             </widget>
-            </item>
-            <item row="4" column="0">
-             <widget class="QLineEdit" name="lineEdit_14"/>
-            </item>
-            <item row="3" column="1">
-             <widget class="QDateEdit" name="dateEdit_6">
-              <property name="calendarPopup">
-               <bool>true</bool>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="3">
-             <widget class="QLineEdit" name="lineEdit_11"/>
-            </item>
-            <item row="4" column="1">
-             <widget class="QDateEdit" name="dateEdit_8">
-              <property name="calendarPopup">
-               <bool>true</bool>
-              </property>
-             </widget>
-            </item>
-            <item row="0" column="3">
-             <widget class="QLabel" name="label_10">
-              <property name="text">
-               <string>Водительское удостоверение
- (серия, номер)</string>
-              </property>
-             </widget>
-            </item>
-            <item row="3" column="5">
-             <widget class="QComboBox" name="comboBox_3"/>
-            </item>
-            <item row="1" column="4">
-             <widget class="QLineEdit" name="lineEdit"/>
-            </item>
-            <item row="2" column="4">
-             <widget class="QLineEdit" name="lineEdit_2"/>
-            </item>
-            <item row="3" column="4">
-             <widget class="QLineEdit" name="lineEdit_3"/>
-            </item>
-            <item row="4" column="4">
-             <widget class="QLineEdit" name="lineEdit_16"/>
-            </item>
-            <item row="1" column="6">
-             <widget class="QSpinBox" name="spinBox"/>
-            </item>
-            <item row="2" column="6">
-             <widget class="QSpinBox" name="spinBox_2"/>
-            </item>
-            <item row="3" column="6">
-             <widget class="QSpinBox" name="spinBox_3"/>
-            </item>
-            <item row="4" column="6">
-             <widget class="QSpinBox" name="spinBox_4"/>
-            </item>
-            <item row="0" column="6">
-             <widget class="QLabel" name="label_24">
-              <property name="font">
-               <font>
-                <pointsize>6</pointsize>
-                <weight>75</weight>
-                <italic>true</italic>
-                <bold>true</bold>
-               </font>
-              </property>
-              <property name="text">
-               <string>Количество страховых случаев
- в течение срока действия
- предыдущего договора
- обязательного
- страхования</string>
-              </property>
-             </widget>
+            <item row="3" column="2">
+             <widget class="QLineEdit" name="lineEdit_13"/>
             </item>
            </layout>
           </item>
@@ -441,10 +328,18 @@
              <widget class="QSpinBox" name="spinBox_5"/>
             </item>
             <item row="1" column="3">
-             <widget class="QSpinBox" name="spinBox_6"/>
+             <widget class="QSpinBox" name="spinBox_6">
+              <property name="maximum">
+               <number>1000000</number>
+              </property>
+             </widget>
             </item>
             <item row="1" column="4">
-             <widget class="QSpinBox" name="spinBox_7"/>
+             <widget class="QSpinBox" name="spinBox_7">
+              <property name="maximum">
+               <number>1000000</number>
+              </property>
+             </widget>
             </item>
             <item row="2" column="0">
              <widget class="QLineEdit" name="lineEdit_6"/>
@@ -456,10 +351,18 @@
              <widget class="QSpinBox" name="spinBox_8"/>
             </item>
             <item row="2" column="3">
-             <widget class="QSpinBox" name="spinBox_10"/>
+             <widget class="QSpinBox" name="spinBox_10">
+              <property name="maximum">
+               <number>1000000</number>
+              </property>
+             </widget>
             </item>
             <item row="2" column="4">
-             <widget class="QSpinBox" name="spinBox_9"/>
+             <widget class="QSpinBox" name="spinBox_9">
+              <property name="maximum">
+               <number>1000000</number>
+              </property>
+             </widget>
             </item>
             <item row="3" column="0">
              <widget class="QLineEdit" name="lineEdit_17"/>
@@ -471,10 +374,18 @@
              <widget class="QSpinBox" name="spinBox_11"/>
             </item>
             <item row="3" column="3">
-             <widget class="QSpinBox" name="spinBox_13"/>
+             <widget class="QSpinBox" name="spinBox_13">
+              <property name="maximum">
+               <number>1000000</number>
+              </property>
+             </widget>
             </item>
             <item row="3" column="4">
-             <widget class="QSpinBox" name="spinBox_12"/>
+             <widget class="QSpinBox" name="spinBox_12">
+              <property name="maximum">
+               <number>1000000</number>
+              </property>
+             </widget>
             </item>
             <item row="4" column="0">
              <widget class="QLineEdit" name="lineEdit_19"/>
@@ -486,10 +397,18 @@
              <widget class="QSpinBox" name="spinBox_14"/>
             </item>
             <item row="4" column="3">
-             <widget class="QSpinBox" name="spinBox_16"/>
+             <widget class="QSpinBox" name="spinBox_16">
+              <property name="maximum">
+               <number>1000000</number>
+              </property>
+             </widget>
             </item>
             <item row="4" column="4">
-             <widget class="QSpinBox" name="spinBox_15"/>
+             <widget class="QSpinBox" name="spinBox_15">
+              <property name="maximum">
+               <number>1000000</number>
+              </property>
+             </widget>
             </item>
            </layout>
           </item>
@@ -523,28 +442,59 @@
        <property name="title">
         <string>Страховой полис</string>
        </property>
-       <layout class="QHBoxLayout" name="horizontalLayout_6">
+       <layout class="QVBoxLayout" name="verticalLayout_4">
         <item>
-         <layout class="QHBoxLayout" name="horizontalLayout_3">
+         <layout class="QVBoxLayout" name="verticalLayout">
           <item>
-           <widget class="QLabel" name="label_20">
-            <property name="text">
-             <string>Серия</string>
-            </property>
-           </widget>
+           <layout class="QHBoxLayout" name="horizontalLayout_3">
+            <item>
+             <widget class="QLabel" name="label_20">
+              <property name="text">
+               <string>Серия</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="polisSerialLineEdit"/>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_21">
+              <property name="text">
+               <string>Номер</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="polisNumLineEdit"/>
+            </item>
+           </layout>
           </item>
           <item>
-           <widget class="QLineEdit" name="polisSerialLineEdit"/>
-          </item>
-          <item>
-           <widget class="QLabel" name="label_21">
-            <property name="text">
-             <string>Номер</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLineEdit" name="polisNumLineEdit"/>
+           <layout class="QHBoxLayout" name="horizontalLayout_6">
+            <item>
+             <widget class="QLabel" name="label">
+              <property name="text">
+               <string>Вступает в силу с </string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QDateTimeEdit" name="startDate"/>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_3">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
           </item>
          </layout>
         </item>
@@ -557,25 +507,15 @@
         <layout class="QVBoxLayout" name="verticalLayout_2">
          <item>
           <layout class="QGridLayout" name="gridLayout_4">
-           <item row="1" column="1">
-            <widget class="QLineEdit" name="notesLineEdit"/>
-           </item>
-           <item row="1" column="0">
+           <item row="0" column="0">
             <widget class="QLabel" name="label_19">
              <property name="text">
               <string>Особые отметки</string>
              </property>
             </widget>
            </item>
-           <item row="0" column="0">
-            <widget class="QLabel" name="label_18">
-             <property name="text">
-              <string>Иные сведения</string>
-             </property>
-            </widget>
-           </item>
            <item row="0" column="1">
-            <widget class="QLineEdit" name="otherInfoLineEdit"/>
+            <widget class="QLineEdit" name="notesLineEdit"/>
            </item>
           </layout>
          </item>
