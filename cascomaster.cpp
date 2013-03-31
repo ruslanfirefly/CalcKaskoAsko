@@ -65,7 +65,7 @@ void CascoMaster::hideCurrentForm()
 void CascoMaster::fillForms(std::initializer_list<QDialog*> f)
 {
     foreach (QDialog* dialog, f) {
-        //dialog->setModal(true);
+        dialog->setModal(true);
         connect(dialog, SIGNAL(next(int)), this, SLOT(next(int)));
         connect(dialog, SIGNAL(prev(int)), this, SLOT(prev(int)));
         connect(dialog, SIGNAL(printBlank()), this, SLOT(printBlank()));
@@ -228,7 +228,7 @@ void CascoMaster::openPrintDialog(QWebView * view)
 {
     printWebView* dlg = new printWebView();
     dlg->setViewPage(view->page(), printWebView::PLAIN);
-    //dlg->setModal(true);
+    dlg->setModal(true);
     dlg->setWindowState(Qt::WindowMaximized);
     dlg->show();
 }
